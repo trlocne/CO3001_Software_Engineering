@@ -6,6 +6,7 @@ import messagequestion from '../../assets/messagequestion.svg'
 import notifications from '../../assets/notifications.svg'
 import test from '../../assets/test.svg'
 import arrowdown from '../../assets/arrowdown.svg'
+import filter from '../../assets/filter.svg'
 export const Navbar = () => {
   return (
     <div className='relative'>

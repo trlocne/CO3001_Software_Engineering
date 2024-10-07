@@ -5,14 +5,23 @@ import mesage from '../../assets/mesage.svg'
 import task from '../../assets/task.svg'
 import setting from '../../assets/setting.svg'
 import lampon from '../../assets/lampon.svg'
+import config from '../../assets/config.svg'
+import statisfication from '../../assets/statisfication.svg'
+import mangeprint from '../../assets/mangeprint.svg'
+
 export const Slidebar = () => {
   return (
     <div className={classes.sliderbar}>
       <ul className="p-[10px]">
-        <li className={` ${classes.itemSliderbar} ${classes.activate}`}><a className='flex flex-row'><img src={category} className='pr-[10px]'/> Trang chính</a></li>
+        <li className={` ${classes.itemSliderbar} ${classes.activate}`}><a className='flex flex-row'><img src={category} className='pr-[10px]'/> Trang chính Student</a></li>
         <li className={classes.itemSliderbar}><a className='flex flex-row'><img src={mesage} className='pr-[10px]'/>Dịch vụ</a></li>
         <li className={classes.itemSliderbar}><a className='flex flex-row'><img src={task} className='pr-[10px]'/>Thư viện</a></li>
         <li className={classes.itemSliderbar}><a className='flex flex-row'><img src={setting} className='pr-[10px]'/>Mua trang in</a></li>
+        <li className={classes.itemSliderbar}><a className='flex flex-row'><img src={config} className='pr-[10px]'/>Cấu hình</a></li>
+        <li className={classes.itemSliderbar}><a className='flex flex-row'><img src={statisfication} className='pr-[10px]'/>Thống kê</a></li>
+        <li className={classes.itemSliderbar}><a className='flex flex-row'><img src={mangeprint} className='pr-[10px]'/>Máy in</a></li>
+        <li className={classes.itemSliderbar}><a className='flex flex-row'><img src={category} className='pr-[10px]'/>Danh sách tài khoản</a></li>
+        <li className={classes.itemSliderbar}><a className='flex flex-row'><img src={category} className='pr-[10px]'/>Trang chính SPSO</a></li>
       </ul>
       <div className='absolute bottom-[200px]'>
         <div className='w-[210px] m-auto'>

@@ -26,6 +26,7 @@ function App() {
     <div className='my-0 p-0'>
       <Navbar/>
       <Slidebar/>
+      <HomePageSPSO/>
     </div>
   )
 }
