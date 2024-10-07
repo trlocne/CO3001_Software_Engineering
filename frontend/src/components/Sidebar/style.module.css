@@ -1,0 +1,29 @@
+.sliderbar{
+    height: calc(100vh - 90px);
+    width: 220px;
+    position: relative;
+}
+
+.sliderbar::after{
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 1px;
+    height: 100%;
+    background: #DBDBDB;
+    z-index: 1;
+}
+
+.itemSliderbar{
+    margin-bottom: 10px;
+    height: 40px;
+    padding: 8px;
+    width: 100%; 
+    bottom: 0;
+}
+
+.activate{
+    border-radius: 6px;
+    background: rgba(80, 48, 229, 0.08);
+}
