@@ -10,7 +10,7 @@ import filter from '../../assets/filter.svg'
 export const Navbar = () => {
   return (
     <div className='relative'>
-      <div className="h-[90px] flex flex-row justify-between after:content-[''] after:bottom-0 after:left-0 after:w-screen after:h-[1px] after:bg-[#DBDBDB] after:absolute">
+      <div className="h-[70px] flex flex-row justify-between after:content-[''] after:bottom-0 after:left-0 after:w-screen after:h-[1px] after:bg-[#DBDBDB] after:absolute">
         <div className='flex flex-row w-[220px] justify-items-center items-center h-[100%] center justify-center relative after:content-[""] after:bottom-0 after:right-0 after:absolute after:w-[1px] after:bg-[#DBDBDB] after:h-[100%]'>
           <img src={logo} className='p-[5px] w-[50px] h-[50px] py-[10px]'/>
           <h1 className='font-semibold text-xl text-[#0D062D]'>HCMUT-SSPS</h1>

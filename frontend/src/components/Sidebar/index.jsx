@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useContext, useEffect} from 'react'
 import classes from './style.module.css'
 import category from '../../assets/category.svg'
 import mesage from '../../assets/mesage.svg'
@@ -8,20 +8,30 @@ import lampon from '../../assets/lampon.svg'
 import config from '../../assets/config.svg'
 import statisfication from '../../assets/statisfication.svg'
 import mangeprint from '../../assets/mangeprint.svg'
+import { GlobalContext } from '../../Context'
+
+// const handleClicked = (e) => {
+//   console.log(e.target.getAttribute('cur-value'))
+// }
 
 export const Slidebar = () => {
+  const { selecInput, setSelecInput} = useContext(GlobalContext)
+  useEffect(() => {
+    console.log(selecInput)
+  } , [selecInput])
+
   return (
     <div className={classes.sliderbar}>
-      <ul className="p-[10px]">
-        <li className={` ${classes.itemSliderbar} ${classes.activate}`}><a className='flex flex-row'><img src={category} className='pr-[10px]'/> Trang chính Student</a></li>
-        <li className={classes.itemSliderbar}><a className='flex flex-row'><img src={mesage} className='pr-[10px]'/>Dịch vụ</a></li>
-        <li className={classes.itemSliderbar}><a className='flex flex-row'><img src={task} className='pr-[10px]'/>Thư viện</a></li>
-        <li className={classes.itemSliderbar}><a className='flex flex-row'><img src={setting} className='pr-[10px]'/>Mua trang in</a></li>
-        <li className={classes.itemSliderbar}><a className='flex flex-row'><img src={config} className='pr-[10px]'/>Cấu hình</a></li>
-        <li className={classes.itemSliderbar}><a className='flex flex-row'><img src={statisfication} className='pr-[10px]'/>Thống kê</a></li>
-        <li className={classes.itemSliderbar}><a className='flex flex-row'><img src={mangeprint} className='pr-[10px]'/>Máy in</a></li>
-        <li className={classes.itemSliderbar}><a className='flex flex-row'><img src={category} className='pr-[10px]'/>Danh sách tài khoản</a></li>
-        <li className={classes.itemSliderbar}><a className='flex flex-row'><img src={category} className='pr-[10px]'/>Trang chính SPSO</a></li>
+      <ul className='p-[10px] h-1/2 overflow-y-auto text-nowrap	text-ellipsis overflow-hidden'>
+        <li className={selecInput == "HomePageUser" ? `${classes.itemSliderbar} ${classes.activate}` : classes.itemSliderbar} cur-value="HomePageUser" onClick={(e) => {setSelecInput(e.currentTarget.getAttribute('cur-value'))}}><a className='flex flex-row'><img src={category} className='pr-[10px]'/>Trang chính Student</a></li>
+        <li className={selecInput == "PrintService" ? `${classes.itemSliderbar} ${classes.activate}` : classes.itemSliderbar} cur-value="PrintService" onClick={(e) => setSelecInput(e.currentTarget.getAttribute('cur-value'))}><a className='flex flex-row'><img src={mesage} className='pr-[10px]'/>Dịch vụ</a></li>
+        <li className={selecInput == "Library" ? `${classes.itemSliderbar} ${classes.activate}` : classes.itemSliderbar} cur-value="Library" onClick={(e) => setSelecInput(e.currentTarget.getAttribute('cur-value'))}><a className='flex flex-row'><img src={task} className='pr-[10px]'/>Thư viện</a></li>
+        <li className={selecInput == "BuyPrintingPages" ? `${classes.itemSliderbar} ${classes.activate}` : classes.itemSliderbar} cur-value="BuyPrintingPages" onClick={(e) => setSelecInput(e.currentTarget.getAttribute('cur-value'))}><a className='flex flex-row'><img src={setting} className='pr-[10px]'/>Mua trang in</a></li>
+        <li className={selecInput == "ConfigPrint" ? `${classes.itemSliderbar} ${classes.activate}` : classes.itemSliderbar} cur-value="ConfigPrint" onClick={(e) => setSelecInput(e.currentTarget.getAttribute('cur-value'))}><a className='flex flex-row'><img src={config} className='pr-[10px]'/>Cấu hình</a></li>
+        <li className={selecInput == "StatisticsSPSO" ? `${classes.itemSliderbar} ${classes.activate}` : classes.itemSliderbar} cur-value="StatisticsSPSO" onClick={(e) => setSelecInput(e.currentTarget.getAttribute('cur-value'))}><a className='flex flex-row'><img src={statisfication} className='pr-[10px]'/>Thống kê</a></li>
+        <li className={selecInput == "ManagePrint" ? `${classes.itemSliderbar} ${classes.activate}` : classes.itemSliderbar} cur-value="ManagePrint" onClick={(e) => setSelecInput(e.currentTarget.getAttribute('cur-value'))}><a className='flex flex-row'><img src={mangeprint} className='pr-[10px]'/>Máy in</a></li>
+        <li className={selecInput == "HomePageAdmin" ? `${classes.itemSliderbar} ${classes.activate}` : classes.itemSliderbar} cur-value="HomePageAdmin" onClick={(e) => setSelecInput(e.currentTarget.getAttribute('cur-value'))}><a className='flex flex-row'><img src={category} className='pr-[10px]'/>Danh sách tài khoản</a></li>
+        <li className={selecInput == "HomePageSPSO" ? `${classes.itemSliderbar} ${classes.activate}` : classes.itemSliderbar} cur-value="HomePageSPSO" onClick={(e) => setSelecInput(e.currentTarget.getAttribute('cur-value'))}><a className='flex flex-row'><img src={category} className='pr-[10px]'/>Trang chính SPSO</a></li>
       </ul>
       <div className='absolute bottom-[200px]'>
         <div className='w-[210px] m-auto'>

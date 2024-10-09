@@ -1,7 +1,8 @@
 .sliderbar{
-    height: calc(100vh - 90px);
+    height: calc(100vh - 70px);
     width: 220px;
     position: relative;
+
 }
 
 .sliderbar::after{
@@ -21,6 +22,12 @@
     padding: 8px;
     width: 100%; 
     bottom: 0;
+    cursor: pointer;
+}
+
+.itemSliderbar:hover{
+    font-weight: bold;
+    color: #5030E5;
 }
 
 .activate{
