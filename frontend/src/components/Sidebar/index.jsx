@@ -22,7 +22,7 @@ export const Slidebar = () => {
 
   return (
     <div className={classes.sliderbar}>
-      <ul className='p-[10px] h-1/2 overflow-y-auto text-nowrap	text-ellipsis overflow-hidden'>
+      <ul className='p-[10px] h-1/2 overflow-y-auto overflow-hidden'>
         <li className={selecInput == "HomePageUser" ? `${classes.itemSliderbar} ${classes.activate}` : classes.itemSliderbar} cur-value="HomePageUser" onClick={(e) => {setSelecInput(e.currentTarget.getAttribute('cur-value'))}}><a className='flex flex-row'><img src={category} className='pr-[10px]'/>Trang chính Student</a></li>
         <li className={selecInput == "PrintService" ? `${classes.itemSliderbar} ${classes.activate}` : classes.itemSliderbar} cur-value="PrintService" onClick={(e) => setSelecInput(e.currentTarget.getAttribute('cur-value'))}><a className='flex flex-row'><img src={mesage} className='pr-[10px]'/>Dịch vụ</a></li>
         <li className={selecInput == "Library" ? `${classes.itemSliderbar} ${classes.activate}` : classes.itemSliderbar} cur-value="Library" onClick={(e) => setSelecInput(e.currentTarget.getAttribute('cur-value'))}><a className='flex flex-row'><img src={task} className='pr-[10px]'/>Thư viện</a></li>
