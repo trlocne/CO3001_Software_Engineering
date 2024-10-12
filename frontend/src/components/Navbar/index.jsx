@@ -56,6 +56,7 @@ export const Navbar = () => {
                   <li className='p-[5px] hover:bg-[#5030e514] px-[15px]' onClick={() => setSelecInput('Profile')}>Tài khoản</li>
                   <li className='p-[5px] hover:bg-[#5030e514] px-[15px]'>Cài đặt</li>
                   <li className='p-[5px] hover:bg-[#5030e514] px-[15px]' onClick={() => setSelecInput('BuyPrintingPages')}>Mua trang in</li>
+                  <li className='p-[5px] hover:bg-[#5030e514] px-[15px]' onClick={() => setSelecInput('HistoryTransaction')}>Lịch sử giao dịch</li>
                   <li className='p-[5px] hover:bg-[#5030e514] px-[15px]'>Đăng xuất</li>
                 </ul>
               </div>}

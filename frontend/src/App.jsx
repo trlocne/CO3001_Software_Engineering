@@ -19,6 +19,7 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 import './App.css'
 import { Profile } from './components/Profile'
 import { Notifications } from './components/Notifications'
+import {HistoryTransaction} from './components/HistoryTransaction'
 
 function getContent(type) {
   switch (type) {
@@ -42,6 +43,7 @@ function getContent(type) {
                 {type == 'ConfigSPSO' && <ConfigSPSO/>}
                 {type == 'Payment' && <Payment/>}
                 {type == 'PrintService' && <PrintService/>}
+                {type == 'HistoryTransaction' && <HistoryTransaction/>}
               </div>
             </div>;
   }

@@ -21,13 +21,29 @@ export default function GlobalState({ children }) {
       title: "Notification 3"
     }
   ]);
+  const [bill, setBill] = useState([
+    {
+      time: "10:00 AM - 22/11/2022",
+      title: "#12093"
+    },
+    {
+      time: "11:00 AM - 21/12/2021",
+      title: "#01934"
+    },
+    {
+      time: "12:00 PM - 20/10/2020",
+      title: "#245532"
+    }
+  ]);
   return (
     <GlobalContext.Provider
       value={{
         selecInput,
         setSelecInput,
         noti, 
-        setNoti
+        setNoti,
+        bill, 
+        setBill
       }}
     >
       {children}
