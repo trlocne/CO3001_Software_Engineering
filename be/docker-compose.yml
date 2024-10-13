@@ -1,0 +1,11 @@
+services:
+  mysql:
+    image: mysql:lts
+    container_name: mysql
+    # set shared memory limit when using docker-compose
+    shm_size: 128mb
+    environment:
+      MYSQL_ROOT_PASSWORD: 123456
+    ports:
+      - 3306:3306
+    user: "root"
