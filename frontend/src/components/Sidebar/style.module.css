@@ -20,9 +20,13 @@
     margin-bottom: 10px;
     height: 40px;
     padding: 8px;
-    width: 100%; 
+    width: 100px; 
     bottom: 0;
     cursor: pointer;
+    width: 200px;         
+    white-space: nowrap;  
+    overflow: hidden;     
+    text-overflow: ellipsis; 
 }
 
 .itemSliderbar:hover{
@@ -32,5 +36,5 @@
 
 .activate{
     border-radius: 6px;
-    background: rgba(80, 48, 229, 0.08);
+    background: #5030e514;
 }

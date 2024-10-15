@@ -15,31 +15,45 @@ import { Navbar } from './components/Navbar'
 import { PrintService } from './components/PrintService'
 import { Slidebar } from './components/Sidebar'
 import { StatisticsSPSO } from './components/StatisticsSPSO'
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 import './App.css'
+import { Profile } from './components/Profile'
+import { Notifications } from './components/Notifications'
+import {HistoryTransaction} from './components/HistoryTransaction'
+
+function getContent(type) {
+  switch (type) {
+    case 'Profile':
+      return <Profile/>;
+    case 'notification':
+      return <Notifications/>;
+    default:
+      return <div className= {`flex flex-row`}>
+              <Slidebar/>
+              <div className={`contentSpace`}>
+                {console.log(type)}
+                {type == 'HomePageAdmin' && <HomePageAdmin/>}
+                {type == 'BuyPrintingPages' && <BuyPrintingPages/>}
+                {type == 'HomePageUser' && <HomePageUser/>}
+                {type == 'HomePageSPSO' && <HomePageSPSO/>}
+                {type == 'ManagePrint' && <ManagePrint/>}
+                {type == 'Library' && <Library/>}
+                {type == 'StatisticsSPSO' && <StatisticsSPSO/>}
+                {type == 'ConfigPrint' && <ConfigPrint/>}
+                {type == 'ConfigSPSO' && <ConfigSPSO/>}
+                {type == 'Payment' && <Payment/>}
+                {type == 'PrintService' && <PrintService/>}
+                {type == 'HistoryTransaction' && <HistoryTransaction/>}
+              </div>
+            </div>;
+  }
+}
 
 function App() {
   const { selecInput, setSelecInput} = useContext(GlobalContext)
   return (
     <div className='my-0 p-0'>
       <Navbar/>
-      <div className='flex flex-row'>
-        <Slidebar/>
-        <div className='contentSpace'>
-          {console.log(selecInput)}
-          {selecInput == 'HomePageAdmin' && <HomePageAdmin/>}
-          {selecInput == 'BuyPrintingPages' && <BuyPrintingPages/>}
-          {selecInput == 'HomePageUser' && <HomePageUser/>}
-          {selecInput == 'HomePageSPSO' && <HomePageSPSO/>}
-          {selecInput == 'ManagePrint' && <ManagePrint/>}
-          {selecInput == 'Library' && <Library/>}
-          {selecInput == 'StatisticsSPSO' && <StatisticsSPSO/>}
-          {selecInput == 'ConfigPrint' && <ConfigPrint/>}
-          {selecInput == 'ConfigSPSO' && <ConfigSPSO/>}
-          {selecInput == 'Payment' && <Payment/>}
-          {selecInput == 'PrintService' && <PrintService/>}
-        </div>
-      </div>
+      {getContent(selecInput)}
     </div>
   )
 }

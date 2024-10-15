@@ -6,6 +6,7 @@ import GlobalState from './Context/index.jsx'
 import { createBrowserRouter, RouterProvider } from "react-router-dom"
 import { HomePage } from './components/HomePage/index.jsx'
 import { Signup } from './components/Signup/index.jsx'
+import { Profile } from './components/Profile/index.jsx'
 
 
 
