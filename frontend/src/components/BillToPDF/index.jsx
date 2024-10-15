@@ -22,7 +22,7 @@ export const BillToPDF = ({billData}) => {
         <h2 className='flex flex-row px-[5px]'> <p className='font-bold pr-[5px]'>Customer:</p> {billData.customerName}</h2>
         <h2 className='flex flex-row px-[5px]'> <p className='font-bold pr-[5px]'>MSSV:</p> {billData.mssv}</h2>
         <h2 className='flex flex-row px-[5px]'> <p className='font-bold pr-[5px]'>Time:</p> {billData.time}</h2>
-        <div className="w-full p-6 my-[80px] font-sans">
+        <div className="w-full p-6 my-[50px] font-sans">
           <div className="flex justify-between mb-2 w-full">
             <span className="text-gray-700">Số lượng giấy mua</span>
             <span className="text-gray-700">{billData.slg} tờ</span>
@@ -51,8 +51,7 @@ export const BillToPDF = ({billData}) => {
           billData={billData}
         />
       </div>
-      
-      <button onClick={() => generatePDF(printRef, {filename: billData.code + '.pdf'})}>Save as PDF</button>
+      <button onClick={() => generatePDF(printRef, {filename: billData.code})}>Save as PDF</button>
     </div>
   );
 };

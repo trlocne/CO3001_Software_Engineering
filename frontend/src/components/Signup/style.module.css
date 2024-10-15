@@ -1,0 +1,42 @@
+
+.signinContainer {
+max-width: 400px;
+width: 100%;
+padding: 20px;
+border: 1px solid #ccc;
+border-radius: 5px;
+box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.signinForm {
+display: flex;
+flex-direction: column;
+}
+
+.formGroup {
+margin-bottom: 15px;
+}
+
+.formGroup label {
+margin-bottom: 5px;
+font-weight: bold;
+}
+
+.formGroup input {
+padding: 8px;
+border: 1px solid #ccc;
+border-radius: 3px;
+}
+
+.submitButton {
+padding: 10px 15px;
+background-color: #007BFF;
+color: white;
+border: none;
+border-radius: 3px;
+cursor: pointer;
+}
+
+.submitButton:hover {
+background-color: #0056b3;
+}
