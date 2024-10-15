@@ -7,7 +7,6 @@ import hcmut.spss.be.repository.RoleRepository;
 import hcmut.spss.be.repository.UserRepository;
 import hcmut.spss.be.security.jwt.AuthEntryPointJwt;
 import hcmut.spss.be.security.jwt.AuthTokenFilter;
-import jakarta.servlet.Filter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
@@ -81,19 +80,22 @@ public class SecurityConfig {
         return new BCryptPasswordEncoder();
     }
 
-    @Bean
-    public CommandLineRunner initData(UserRepository userRepository, RoleRepository roleRepository, PasswordEncoder passwordEncoder) {
-        return args -> {
-            Role studentRole = roleRepository.findByRoleName(AppRole.STUDENT).orElseGet(() -> roleRepository.save(new Role(AppRole.STUDENT)));
-            Role spsoRole = roleRepository.findByRoleName(AppRole.SPSO).orElseGet(() -> roleRepository.save(new Role(AppRole.SPSO)));
-            Role adminRole = roleRepository.findByRoleName(AppRole.ADMIN).orElseGet(() -> roleRepository.save(new Role(AppRole.ADMIN)));
-
-            if (!userRepository.existsByUserName("user1")) {
-                User user1 = new User()
-                user1.setEnabled(true);
-                user1.setRole(studentRole);
-                userRepository.save(user1);
-            }
-        }
-    }
+//    @Bean
+//    public CommandLineRunner initData(UserRepository userRepository, RoleRepository roleRepository, PasswordEncoder passwordEncoder) {
+//        return args -> {
+//            Role studentRole = roleRepository.findByRoleName(AppRole.STUDENT).orElseGet(() -> roleRepository.save(new Role(AppRole.STUDENT)));
+//            Role spsoRole = roleRepository.findByRoleName(AppRole.SPSO).orElseGet(() -> roleRepository.save(new Role(AppRole.SPSO)));
+//            Role adminRole = roleRepository.findByRoleName(AppRole.ADMIN).orElseGet(() -> roleRepository.save(new Role(AppRole.ADMIN)));
+//
+//            if (!userRepository.existsByUsername("user1")) {
+//                User user1 = new User("user1", "user1@gmail.com", passwordEncoder.encode("123456"));
+//                user1.setEnabled(true);
+//                user1.setOnline(false);
+//                user1.setMssv("2212703");
+//                user1.setPhoneNumber("0383811208");
+//                user1.setRole(studentRole);
+//                userRepository.save(user1);
+//            }
+//        };
+//    }
 }

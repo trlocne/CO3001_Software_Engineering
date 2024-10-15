@@ -2,6 +2,7 @@ package hcmut.spss.be.entity.user;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import hcmut.spss.be.security.service.UserDetailsImpl;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
@@ -37,6 +38,9 @@ public class User {
     @Column(name = "email")
     private String email;
 
+    @Column(name = "mssv", unique = true)
+    private String mssv;
+
     @Size(max = 120)
     @Column(name = "password")
     @JsonIgnore
@@ -61,4 +65,10 @@ public class User {
     @JsonBackReference
     @ToString.Exclude
     private Role role;
+
+    public User(String username, String email, String password) {
+        this.username = username;
+        this.email = email;
+        this.password = password;
+    }
 }
