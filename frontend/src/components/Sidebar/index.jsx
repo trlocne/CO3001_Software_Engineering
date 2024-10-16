@@ -32,6 +32,7 @@ export const Slidebar = () => {
         <li className={selecInput == "ManagePrint" ? `${classes.itemSliderbar} ${classes.activate}` : classes.itemSliderbar} cur-value="ManagePrint" onClick={(e) => setSelecInput(e.currentTarget.getAttribute('cur-value'))}><a className='flex flex-row'><img src={mangeprint} className='pr-[10px]'/>Máy in</a></li>
         <li className={selecInput == "HomePageAdmin" ? `${classes.itemSliderbar} ${classes.activate}` : classes.itemSliderbar} cur-value="HomePageAdmin" onClick={(e) => setSelecInput(e.currentTarget.getAttribute('cur-value'))}><a className='flex flex-row'><img src={category} className='pr-[10px]'/>Danh sách tài khoản</a></li>
         <li className={selecInput == "HomePageSPSO" ? `${classes.itemSliderbar} ${classes.activate}` : classes.itemSliderbar} cur-value="HomePageSPSO" onClick={(e) => setSelecInput(e.currentTarget.getAttribute('cur-value'))}><a className='flex flex-row'><img src={category} className='pr-[10px]'/>Trang chính SPSO</a></li>
+        <li className={selecInput == "ConfigSPSO" ? `${classes.itemSliderbar} ${classes.activate}` : classes.itemSliderbar} cur-value="ConfigSPSO" onClick={(e) => setSelecInput(e.currentTarget.getAttribute('cur-value'))}><a className='flex flex-row'><img src={category} className='pr-[10px]'/>Cấu hình SPSO</a></li>
       </ul>
       <div className='absolute bottom-[200px]'>
         <div className='w-[210px] m-auto'>
