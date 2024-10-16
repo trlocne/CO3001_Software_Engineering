@@ -7,20 +7,20 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
+import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import java.time.LocalDateTime;
+import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name = "user")
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
+@Builder
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -33,6 +33,11 @@ public class User {
     private String username;
 
     @NotBlank
+    @Size(min=3, max=100)
+    @Column(name = "name")
+    private String name;
+
+    @NotBlank
     @Size(max = 50)
     @Email
     @Column(name = "email")
@@ -41,7 +46,7 @@ public class User {
     @Column(name = "mssv", unique = true)
     private String mssv;
 
-    @Size(max = 120)
+    @Size(min=3)
     @Column(name = "password")
     @JsonIgnore
     private String password;
@@ -50,8 +55,11 @@ public class User {
     @Column(name = "phone_number")
     private String phoneNumber;
 
+    @Column(name = "avatar_url")
+    private String avatarUrl;
+
     private boolean enabled=true;
-    private boolean isOnline=false;
+    private boolean online=false;
 
     @CreationTimestamp
     @Column(updatable = false)
@@ -66,9 +74,11 @@ public class User {
     @ToString.Exclude
     private Role role;
 
-    public User(String username, String email, String password) {
+    public User(String username, String name, String email, String password, String phoneNumber) {
         this.username = username;
+        this.name = name;
         this.email = email;
         this.password = password;
+        this.phoneNumber = phoneNumber;
     }
 }

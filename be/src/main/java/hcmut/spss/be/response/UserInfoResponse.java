@@ -1,22 +1,23 @@
 package hcmut.spss.be.response;
 
 import lombok.AllArgsConstructor;
-import lombok.Getter;
+import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 
 import java.util.List;
 
-@Setter
-@Getter
+@Data
 @AllArgsConstructor
 @NoArgsConstructor
 public class UserInfoResponse {
-    private Long id;
-    private String username;
+    private Long userId;
+    private String userName;
     private String email;
+    private String name;
     private String mssv;
-    private boolean enabled;
-    private boolean isOnline;
+    private String phone;
+    private String avtUrl;
+    private boolean enable;
+    private boolean online;
     private List<String> roles;
 }

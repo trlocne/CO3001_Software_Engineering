@@ -17,3 +17,14 @@ spring:
   app:
     jwtSecret: mySecretKey123912738aopsgjnspkmndfsopkvajoirjg94gf2opfng2moknm
     jwtExpirationMs: 172800000
+
+logging:
+  level.org:
+    springframework:
+      security: DEBUG
+      orm.jpa.JpaBaseConfiguration: ERROR
+    hibernate:
+      SQL: OFF
+      type.descriptor.sql.BasicBinder: OFF
+      orm.deprecation: ERROR
+      engine.transaction.jta.platform.internal.JtaPlatformInitiator: ERROR
