@@ -84,4 +84,18 @@ public class SecurityConfig {
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
+
+    @Bean
+    public CommandLineRunner initData(RoleRepository roleRepository) {
+        return args -> {
+            Role userRole = roleRepository.findByRoleName(AppRole.STUDENT)
+                    .orElseGet(() -> roleRepository.save(new Role(AppRole.STUDENT)));
+
+            Role adminRole = roleRepository.findByRoleName(AppRole.ADMIN)
+                    .orElseGet(() -> roleRepository.save(new Role(AppRole.ADMIN)));
+
+            Role spsoRole = roleRepository.findByRoleName(AppRole.SPSO)
+                    .orElseGet(() -> roleRepository.save(new Role(AppRole.SPSO)));
+        };
+    }
 }

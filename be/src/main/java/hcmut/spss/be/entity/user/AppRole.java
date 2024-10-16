@@ -3,5 +3,5 @@ package hcmut.spss.be.entity.user;
 public enum AppRole {
     STUDENT,
     SPSO,
-    ADMIN
+    ROLE_USER, ROLE_ADMIN, ADMIN
 }
