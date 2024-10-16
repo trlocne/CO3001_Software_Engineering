@@ -7,7 +7,6 @@ import hcmut.spss.be.repository.RoleRepository;
 import hcmut.spss.be.repository.UserRepository;
 import hcmut.spss.be.security.jwt.AuthEntryPointJwt;
 import hcmut.spss.be.security.jwt.AuthTokenFilter;
-import jakarta.servlet.Filter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
@@ -17,10 +16,12 @@ import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import org.springframework.security.web.csrf.CookieCsrfTokenRepository;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
@@ -31,6 +32,7 @@ import java.util.List;
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig {
+
     @Autowired
     private AuthEntryPointJwt unauthorizedHandler;
 
@@ -41,19 +43,21 @@ public class SecurityConfig {
 
     @Bean
     SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+        http.csrf(csrf -> csrf.csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse())
+                                .ignoringRequestMatchers("/api/auth/public/**"));
         http.authorizeHttpRequests((requests)
                         -> requests
                         .requestMatchers("/api/admin/**").hasRole("ADMIN")
-                        //.requestMatchers("/api/csrf-token").permitAll()
+                        .requestMatchers("/api/csrf-token/**").permitAll()
                         .requestMatchers("/api/auth/public/**").permitAll()
+                        .requestMatchers("/swagger-ui/**").permitAll()
+                        .requestMatchers("/v3/**").permitAll()
+                        .requestMatchers("/trigger/**").permitAll()
                         .anyRequest().authenticated());
-        http.exceptionHandling(exception
-                -> exception.authenticationEntryPoint(unauthorizedHandler));
-        http.addFilterBefore(authenticationJwtTokenFilter(),
-                UsernamePasswordAuthenticationFilter.class);
+        http.exceptionHandling(exception -> exception.authenticationEntryPoint(unauthorizedHandler));
+        http.addFilterBefore(authenticationJwtTokenFilter(), UsernamePasswordAuthenticationFilter.class);
         http.formLogin(Customizer.withDefaults());
         http.httpBasic(Customizer.withDefaults());
-        http.cors(Customizer.withDefaults());
         return http.build();
     }
 
@@ -79,21 +83,5 @@ public class SecurityConfig {
     @Bean
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
-    }
-
-    @Bean
-    public CommandLineRunner initData(UserRepository userRepository, RoleRepository roleRepository, PasswordEncoder passwordEncoder) {
-        return args -> {
-            Role studentRole = roleRepository.findByRoleName(AppRole.STUDENT).orElseGet(() -> roleRepository.save(new Role(AppRole.STUDENT)));
-            Role spsoRole = roleRepository.findByRoleName(AppRole.SPSO).orElseGet(() -> roleRepository.save(new Role(AppRole.SPSO)));
-            Role adminRole = roleRepository.findByRoleName(AppRole.ADMIN).orElseGet(() -> roleRepository.save(new Role(AppRole.ADMIN)));
-
-            if (!userRepository.existsByUserName("user1")) {
-                User user1 = new User()
-                user1.setEnabled(true);
-                user1.setRole(studentRole);
-                userRepository.save(user1);
-            }
-        }
     }
 }
