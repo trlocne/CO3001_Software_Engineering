@@ -7,6 +7,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom"
 import { HomePage } from './components/HomePage/index.jsx'
 import { Signup } from './components/Signup/index.jsx'
 import { Profile } from './components/Profile/index.jsx'
+import { ConfigSPSO } from './components/ConfigSPSO/index.jsx'
 
 
 
@@ -22,6 +23,10 @@ const router = createBrowserRouter([
   {
     path:"/Signup",
     element:<Signup/>
+  },
+  {
+    path:"/ConfigSPSO",
+    element:<ConfigSPSO/>
   },
 ]);
 
