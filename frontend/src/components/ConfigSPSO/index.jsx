@@ -2,7 +2,7 @@ import React, { useRef, useState } from 'react';
 import classes from './style.module.css';
 import deletePromote from '../../assets/deletePromote.svg'
 import calendar from '../../assets/calendar.svg'
-import filter from '../../assets/filter.svg'
+import filterimage from '../../assets/filterimage.svg'
 import arrow from '../../assets/arrow.svg'
 import arrowdown from '../../assets/arrowdown.svg'
 // import './styleModule.css';
@@ -168,8 +168,9 @@ export const ConfigSPSO = () => {
       </div>
       <div className={classes.search}>
         <div className={classes.search__filter}>
+          
           <select value={selectHK} onChange={handleFilter} className={classes.filter_HK}>
-            <option value="All"><div><img src={filter} />All</div></option>
+            <option value="All"><img src={filterimage} />All</option>
             <option value="HK231">HK231</option>
             <option value="HK232">HK232</option>
             <option value="HK233">HK233</option>
@@ -194,7 +195,7 @@ export const ConfigSPSO = () => {
             <th>Mã</th>
             <th className={classes.hidden_th}></th>
           </thead>
-          <tbody>
+          <tbody style={{ height: "240px", overflowY: "auto" }}>
             {listPromote.map((item, index) => {
               if (selectHK === "All" || item.term === selectHK) {
                 return (
