@@ -97,7 +97,6 @@
  .table > table > tbody{
     height: 261px;
     overflow-y: auto;
-
  }
 .table > table >tbody >tr >td{
     height: 18px;

@@ -1,8 +1,9 @@
 import React from 'react'
-import classes from './style.module.css'
+import './stylemodule.css'
 
 export const HomePageUser = () => {
   return (
-    <div>HomePageUser</div>
+    <div className = "nav" >HomePageUser</div>
+
   )
 }

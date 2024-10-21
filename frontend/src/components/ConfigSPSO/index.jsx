@@ -169,7 +169,7 @@ export const ConfigSPSO = () => {
       <div className={classes.search}>
         <div className={classes.search__filter}>
           <select value={selectHK} onChange={handleFilter} className={classes.filter_HK}>
-            <option value="All"><img src={filter} />All</option>
+            <option value="All"><div><img src={filter} />All</div></option>
             <option value="HK231">HK231</option>
             <option value="HK232">HK232</option>
             <option value="HK233">HK233</option>
