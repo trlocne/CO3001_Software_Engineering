@@ -1,0 +1,132 @@
+.hello {
+    padding: 15px 48.5px;
+}
+
+.name {
+    color: #0D062D;
+    font-family:Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+    font-size: 36px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    text-transform: capitalize;
+}
+.text {
+    color: #828282;
+    font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+.buying {
+    margin-top: 30px;
+    width: 667px;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.form-group {
+    margin-bottom: 20px;
+    
+  }
+  
+p.so-trang {
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #404040;
+}
+input[type="number"], input[type="text"] #so-trang{
+    width: 667px;
+    height: 75px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+}
+.have-section {
+    width: 667px;
+    display: block;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.having {
+    display: inline-block;
+    position: relative;
+    left: 0;
+    width: 50%;
+}
+.number {
+    display: inline-block;
+    position: absolute;
+    right: 0;
+}
+
+.options {
+    display: flex;
+    justify-content: space-between;
+    width: 667px;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  
+.option-btn {
+    
+    width: 148px;
+    height: 56px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #f8f9fa;
+    cursor: pointer;
+}
+.option-btn:hover {
+    background-color: #007bff;
+    color: white;
+    border: 1px solid #007bff;
+}
+p.ma-giam-gia {
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #404040;
+}
+
+input#ma-giam-gia{
+    width: 357px;
+    height: 41px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+.summary {
+    border-top: 1px solid #ddd;
+}
+
+span {
+    position: absolute;
+    right: 0;
+}
+.summary p {
+    margin: 10px 0;
+  }
+  
+  .btn-thanh-toan {
+    padding: 15px 30px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  
+.btn-thanh-toan:hover {
+    background-color: #0056b3;
+}
