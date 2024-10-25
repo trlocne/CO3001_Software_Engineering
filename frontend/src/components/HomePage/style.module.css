@@ -1,0 +1,26 @@
+.header_border{
+    height: 5px;
+    width: 33%;
+    background: #263a86;
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 1030;
+}
+.header_border:before {
+    height: 5px;
+    width: 103%;
+    background: #263a86;
+    position: absolute;
+    content: "";
+    left: 200%;
+}
+.header_border:after {
+    height: 5px;
+    width: 100%;
+    background: #3085c6;
+    position: absolute;
+    content: "";
+    left: 100%;
+}

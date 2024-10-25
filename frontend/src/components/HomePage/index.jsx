@@ -6,14 +6,17 @@ import img1 from '../../assets/bg_hcmut.png'
 
 export const HomePage = () => {
   return (
-    <div className="w-[100vw] mx-auto font-semibold relative bg-cover bg-[url(${img1})] bg-no-repeat	bg-fixed bg-center	 " style={{background: `url(${img1})`, backgroundSize: "cover"}}>
-      <div>
-      <div className='flex flex-row justify-between h-[70px] items-center mx-[5%]'>
+    <div className="lg:w-[100vw] mx-auto font-semibold relative bg-cover bg-[url(${img1})] bg-no-repeat	bg-fixed bg-center	 " style={{background: `url(${img1})`, backgroundSize: "cover"}}>
+      <div className={classes.header_border}>
+        </div>
+        <div>
+      <div className='flex flex-row justify-between h-[70px] items-center px-[5%] border border-b-gray-300'>
         <div className='flex flex-row justify-start items-center'>
           <img src={logo} className='p-[5px] w-[50px] h-[50px] py-[10px]'/>
           <div className=' font-semibold'>
             HCMUT-SPSS
           </div>
+          
         </div>
         <div>
           <ul className="flex flex-row min-w-[230px] justify-between font-semibold cursor-pointer">
@@ -22,7 +25,7 @@ export const HomePage = () => {
           </ul>
         </div>
         <div>
-          <button className='w-[100px] bg-[#4353FF] rounded-[60px] text-[#fff] font-semibold py-[3px]'>Login</button>
+          <button className='w-[100px] bg-[#4353FF] hover:opacity-90 rounded-[60px] text-[#fff] font-semibold py-[3px]'>Login</button>
         </div>
       </div>
 
@@ -38,9 +41,9 @@ export const HomePage = () => {
 
         <div className='flex flex-row mb-[27px] items-center'>
           <div className='mr-[25px]'>
-            <button className='w-[200px] h-[45px] bg-[#4353FF] rounded-[60px] text-[#fff] font-semibold py-[5px]'>Login now</button>
+            <button className='w-[200px] h-[45px] bg-[#4353FF] hover:opacity-90 rounded-[60px] text-[#fff] font-semibold py-[5px]'>Login now</button>
           </div>
-          <a href='#' className='flex flex-row items-center'>
+          <a href='#' className='flex flex-row items-center hover:opacity-90'>
           <img src={play} className='h-[22.5px] w-[22.5px] mr-[5px]'/>
 
           <div className='text-[#499BE9]'>
@@ -58,7 +61,7 @@ export const HomePage = () => {
               <input type="text" id="code" class=" border border-gray-300 text-sm rounded-[13px] block px-[10px] py-[13px] w-full outline-none" placeholder="Nhập mã code" required />
             </form>
             <div className='w-[100px]'>
-              <button className='w-[100px] bg-[#4353FF] rounded-[60px] text-[#fff] font-semibold py-[8px] ml-[5px] h-full'>Print </button>
+              <button className='w-[100px] bg-[#4353FF] hover:opacity-90 rounded-[60px] text-[#fff] font-semibold py-[8px] ml-[5px] h-full'>Print </button>
             </div>
           </div>
         </div>
