@@ -30,7 +30,7 @@ export const HomePageSPSO = () => {
     datasets: [
       {
         label: 'Doanh thu (triệu VND)',
-        data: [4, 1, 3, 7, 6, 5],
+        data: [9.1, 1, 3, 7, 6, 5],
         fill: true,
         backgroundColor: 'rgba(105, 155, 255, 1)',
         borderColor: 'rgba(105, 155, 255, 1)',
@@ -90,7 +90,7 @@ export const HomePageSPSO = () => {
       </header>
 
       <div className={classes.wholeContent}>
-        <div className={`${classes.AreaGrid} ${classes.TongLuotInTrongTuan}`}>
+        <div className={`${classes.AreaGrid} ${classes.boxs} ${classes.TongLuotInTrongTuan}`}>
           <header className={classes.DivHeader}>
             <h2>Tổng lượt in trong tuần</h2>
           </header>
@@ -99,7 +99,7 @@ export const HomePageSPSO = () => {
           </div>
         </div>
 
-        <div className={`${classes.AreaGrid} ${classes.DoanhThu}`}>
+        <div className={`${classes.AreaGrid} ${classes.boxs1} ${classes.DoanhThu}`}>
           <header className={classes.DivHeader}>
             <h2>Doanh thu</h2>
           </header>

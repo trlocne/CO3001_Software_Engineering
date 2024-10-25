@@ -35,6 +35,14 @@
         line-height: normal;
 }
 
+.boxs{
+        box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px;
+}
+
+.boxs1{
+        box-shadow: 0px 4px 39px 9px rgba(81, 69, 159, 0.09);
+}
+
 
 /* Nội dung chính - 2 biểu đồ + 2 khu vực thống kê - thông báo */
 .wholeContent {
@@ -62,7 +70,7 @@
 
 .AreaGrid {
         background-color: white;
-        box-shadow: 0 0px 10px #5555556f;
+        /* box-shadow: 0 0px 10px #5555556f; */
         width: 95%;
         height: 90%;
         padding: 15px;
@@ -131,24 +139,24 @@
 .LuotTruyCap {
         grid-row: 1 / 2;
         background-color: rgba(255, 240, 230, 1);
-        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        /* box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); */
 }
 
 .SoTrangGiayDaDuocIn {
         grid-row: 2 / 3;
         background-color: rgba(236, 234, 254, 1);
-        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        /* box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); */
 }
 
 .SoTrangGiayDaDuocMua {
         grid-row: 3 / 4;
         background-color: rgba(229, 247, 251, 1);
-        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        /* box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); */
 }
 
 .box:hover {
         transform: translateY(-5px);
-        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        /* box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2); */
 }
 
 .LuotTruyCap:hover {
