@@ -1,0 +1,255 @@
+/* Container cho toàn bộ phần ConfigPrint */
+.HomePageSPSO {
+        font-family: Arial, sans-serif;
+        padding: 2vh 3vw;
+        size: 100%;
+        width: 100%;
+        height: 93vh;
+        position: relative;
+        overflow-y: scroll;
+}
+
+/* Header */
+.header {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        margin-bottom: 30px;
+}
+
+.headerTitle {
+        color: #0D062D;
+        font-size: 36px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+        text-transform: capitalize;
+}
+
+.headerSubtitle {
+        color: #828282;
+        /* font-family: Manrope; */
+        font-size: 14px;
+        font-style: normal;
+        /* font-weight: 600; */
+        line-height: normal;
+}
+
+
+/* Nội dung chính - 2 biểu đồ + 2 khu vực thống kê - thông báo */
+.wholeContent {
+        /* background-color: rgba(53, 52, 52, 0.05); */
+        width: 78vw;
+        height: 900px;
+        display: grid;
+        grid-template-columns: 2fr 1fr;
+        grid-template-rows: 1fr 1fr;
+}
+
+.DivHeader {
+        color: var(--DMV-Black, #23262F);
+        font-size: 18px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: 40px;
+        /* position: absolute; */
+        padding: 6px;
+        z-index: 50;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+}
+
+.AreaGrid {
+        background-color: white;
+        box-shadow: 0 0px 10px #5555556f;
+        width: 95%;
+        height: 90%;
+        padding: 15px;
+        box-sizing: border-box;
+        border-radius: 10px;
+        position: relative;
+}
+
+.TongLuotInTrongTuan {
+        grid-column: 1 / 2;
+        grid-row: 1 / 2;
+}
+
+.DoanhThu {
+        grid-column: 1 / 2;
+        grid-row: 2 / 3;
+}
+
+.SoLieuThongKe {
+        grid-column: 2 / 3;
+        grid-row: 1 / 2;
+}
+
+.ThongBao {
+        grid-column: 2 / 3;
+        grid-row: 2 / 3;
+}
+
+
+/* Chart container */
+.Graph1,
+.Graph2 {
+        height: 90%;
+        width: 95%;
+        margin: 0 auto;
+        border-radius: 12px;
+        padding: 10px 10px 0 10px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+        .wholeContent {
+                grid-template-columns: 1fr;
+        }
+}
+
+
+
+/* Area 1: Thống kê */
+.Area1 {
+        display: grid;
+        grid-template-rows: repeat(3, 1fr);
+        height: 100%;
+}
+
+.box {
+        padding: 15px;
+        margin: 5px;
+        box-sizing: border-box;
+        border-radius: 15px;
+        text-align: center;
+        transition: all 0.3s ease;
+        cursor: pointer;
+}
+
+.LuotTruyCap {
+        grid-row: 1 / 2;
+        background-color: rgba(255, 240, 230, 1);
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.SoTrangGiayDaDuocIn {
+        grid-row: 2 / 3;
+        background-color: rgba(236, 234, 254, 1);
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.SoTrangGiayDaDuocMua {
+        grid-row: 3 / 4;
+        background-color: rgba(229, 247, 251, 1);
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.box:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+.LuotTruyCap:hover {
+        background-color: rgba(255, 230, 220, 1);
+}
+
+.SoTrangGiayDaDuocIn:hover {
+        background-color: rgba(216, 214, 254, 1);
+}
+
+.SoTrangGiayDaDuocMua:hover {
+        background-color: rgba(204, 255, 255, 1);
+}
+
+
+.numberArea1 {
+        color: #333;
+        font-size: 2rem;
+        font-weight: 700;
+        line-height: 1.2;
+        letter-spacing: 0.5px;
+}
+
+.numberArea1:hover {
+        transform: scale(1.05);
+}
+
+.MoTa {
+        color: #000;
+        /* font-family: Manrope; */
+        font-size: 1rem;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+        letter-spacing: 0.1px;
+        /* text-transform: capitalize; */
+}
+
+.HomQua {
+        color: #787486;
+        /* font-family: Inter; */
+        font-size: 10px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+        padding-top: 5px;
+}
+
+
+
+/* Area2: Thông báo - Notifications */
+.ViewAll {
+        color: #6956E5;
+        font-size: 0.8rem;
+        font-style: normal;
+        font-weight: 600;
+        line-height: 24px;
+        cursor: pointer;
+}
+
+.ViewAll:hover {
+        color: #6927e0;
+}
+
+.Area2 {
+        display: grid;
+        grid-template-rows: repeat(auto-fill, minmax(70px, 1fr));
+        height: 320px;
+        gap: 10px;
+        overflow-y: auto;
+        margin-top: 10px;
+}
+
+.Notification {
+        background-color: rgba(161, 161, 161, 0.119);
+        color: #31708f;
+        padding: 10px;
+        border-radius: 10px;
+        display: grid;
+        grid-template-columns: 1fr 5fr;
+        align-items: center;
+        cursor: pointer;
+}
+
+.Notification:hover {
+        background-color: #8ab9e54c;
+}
+
+.NotificationContent {
+        color: var(--DMV-Black, #23262F);
+        font-size: 0.9rem;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+        padding: 0 0 4px 0;
+}
+
+.NotificationTime {
+        color: #708099;
+        font-size: 0.7rem;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+}
