@@ -1,6 +1,5 @@
 .contentSpace{
     width: calc(100vw - 220px);
-    height: calc(100vh - 70px);
-    overflow-y: scroll;
-    overflow: hidden;
+    height: calc(90vh);
+    overflow-y: auto;
 }
