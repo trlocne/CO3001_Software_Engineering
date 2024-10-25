@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import React, { useState } from 'react'
 import classes from './style.module.css'
 import Folder_dublicate_duotone from '../../assets/Folder_dublicate_duotone.svg'
@@ -94,6 +95,10 @@ const document =[
   
 ]; 
 
+=======
+import React from 'react'
+import classes from './style.module.css'
+>>>>>>> a3f2b9d3a828790161e70d5f33aae127ebf00e9a
 export const HomePageUser = () => {
   const nameUser = "Nguyen Van A";
   const numberHPage =200;
@@ -104,6 +109,7 @@ export const HomePageUser = () => {
     setSelectHK(e.target.selectedOptions[0].value);
   };
   return (
+<<<<<<< HEAD
     <div className={classes.container}>
       <div className={classes.info}>
         <div className={classes.info_name}>
@@ -165,5 +171,8 @@ export const HomePageUser = () => {
       
     </div>
 
+=======
+    <div>HomePageUser</div>
+>>>>>>> a3f2b9d3a828790161e70d5f33aae127ebf00e9a
   )
 }
