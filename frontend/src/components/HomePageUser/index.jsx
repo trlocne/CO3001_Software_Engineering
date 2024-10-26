@@ -128,11 +128,8 @@ const document = [
     infoPrinter: "BE ơi"
   }
 
-<<<<<<< HEAD
 ];
 
-=======
->>>>>>> 3db48c86834bc3398ae9c140ac9f648da1bc100c
 export const HomePageUser = () => {
   const nameUser = "Nguyen Van A";
   const numberHPage = 200;
