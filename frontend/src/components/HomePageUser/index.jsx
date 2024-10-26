@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { PDFViewer } from '@react-pdf/viewer'
+// import { PDFViewer } from '@react-pdf/viewer'
 import classes from './style.module.css'
 import Folder_dublicate_duotone from '../../assets/Folder_dublicate_duotone.svg'
 import onProgressDot from '../../assets/onProgressDot.svg'
@@ -166,12 +166,12 @@ export const HomePageUser = () => {
       return () => clearTimeout(timer);
     }
   }, [preview]);
-  useEffect(() => {
-    // Gọi API để lấy URL của file PDF
-    fetch('/api/get-pdf-url')
-      .then(response => response.json())
-      .then(data => setPdfUrl(data.url));
-  }, []);
+  // useEffect(() => {
+  //   // Gọi API để lấy URL của file PDF
+  //   fetch('/api/get-pdf-url')
+  //     .then(response => response.json())
+  //     .then(data => setPdfUrl(data.url));
+  // }, []);
   return (
     <div className={classes.container}>
       <div className={classes.info}>
