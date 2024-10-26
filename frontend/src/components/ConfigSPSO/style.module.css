@@ -221,9 +221,15 @@ tbody tr {
     margin-top: 27px;
     min-width: 130px;
     height: 37px;
+} */
+.btn_save {
+    border: 1px solid #787486;
+    border-radius: 6px;
+    width: 130px;
+    height: 37px;
+    margin-top: 27px;
 }
-
-.btn_save::before {
+/* .btn_save::before {
     content: '';
     position: absolute;
     inset: 0;
@@ -235,19 +241,23 @@ tbody tr {
     z-index: -1;
     background-color: #5bd053;
     transition: all 0.6s cubic-bezier(0.23, 1, 0.320, 1);
-}
+} */
 
-.btn_save:hover::before {
+/* .btn_save:hover::before {
     scale: 3;
-}
+} */
 
-.btn_save:hover {
+/* .btn_save:hover {
     color: #fff;
     scale: 1.1;
     box-shadow: 0 0px 20px rgba(193, 163, 98, 0.4);
+} */
+.btn_save:hover{
+    box-shadow: 0px 0px 10px #8888;
+    transform: translateY(-1px);
 }
 
-.btn_save:active {
+/* .btn_save:active {
     scale: 1;
 } */
 
@@ -263,6 +273,16 @@ tbody tr {
     width: 450px;
     position: relative;
     margin-top: 3px;
+}
+
+.configFile::after{
+    position: absolute;
+    top: 0;
+    left: 0;
+    content: "";
+    width: 450px;
+    height: 80px;
+    background-color: transparent;
 }
 
 .cf_dislay {
@@ -320,6 +340,7 @@ tbody tr {
     top: 0;
     right: 0;
     transform: translateX(-50%) translateY(50%);
+    cursor: pointer;
 
 }
 
@@ -355,17 +376,22 @@ tbody tr {
     z-index: 1;
     padding: 5px;
     box-shadow: 0px 1px 48px 0px rgba(25, 39, 89, 0.06);
-
+    display: flex !important;
+    min-height: 37px;
 }
 
-.appear {
-    display: flex !important;
-    animation: dropdown 0.4s ease-in-out forwards;
+.appear { 
+    opacity: 1;
+    transform: translateY(0);
+    /* animation: dropdown 0.4s ease-in-out forwards; */
 }
 
 .disappear {
+    opacity: 0;
+    transform: translateY(-100%);
+    display: none !important;
     /* display: flex !important; */
-    animation: fadeOut 0.3s ease-in-out forwards;
+    /* animation: fadeOut 0.3s ease-in-out forwards; */
 }
 
 @keyframes dropdown {

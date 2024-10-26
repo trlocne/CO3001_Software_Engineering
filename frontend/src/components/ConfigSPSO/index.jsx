@@ -364,7 +364,7 @@ export const ConfigSPSO = () => {
         </div>
         <div className={classes.block_item}>
           <label htmlFor="">Loại file được upload</label>
-          <div className={classes.configFile}>
+          <div className={classes.configFile} onMouseLeave={() => {setArroww(arrow);setCheckDD(false);}}>
             <div className={classes.cf_dislay}>
               <div className={classes.cf_content}>
                 {typeFiles.map((item, index) => (
@@ -373,7 +373,7 @@ export const ConfigSPSO = () => {
                   </div>
                 ))}
               </div>
-              <div className={`${classes.cf_arrow}  `}><img onClick={handledd} src={arroww} /></div>
+              <div className={`${classes.cf_arrow} `} onClick={handledd}><img  src={arroww} /></div>
             </div>
             <div className={`${classes.cf_dd} ${checkDD ? classes.appear : classes.disappear}`}>
               <div className={classes.cf_contenthd}>
