@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import { PDFViewer } from '@react-pdf/viewer'
 import classes from './style.module.css'
 import Folder_dublicate_duotone from '../../assets/Folder_dublicate_duotone.svg'
 import onProgressDot from '../../assets/onProgressDot.svg'
@@ -165,6 +166,12 @@ export const HomePageUser = () => {
       return () => clearTimeout(timer);
     }
   }, [preview]);
+  useEffect(() => {
+    // Gọi API để lấy URL của file PDF
+    fetch('/api/get-pdf-url')
+      .then(response => response.json())
+      .then(data => setPdfUrl(data.url));
+  }, []);
   return (
     <div className={classes.container}>
       <div className={classes.info}>
@@ -253,7 +260,9 @@ export const HomePageUser = () => {
               </div>
               <button className={classes.button_nav}>Cấu Hình In</button>
             </div>
-            <div className={classes.preview_file}></div>
+            <div className={classes.preview_file}>
+              <iframe src="https://res.cloudinary.com/dzp3hs84t/image/upload/v1727798906/vhiv9kpaktcfcg62rcau.pdf" ></iframe>
+            </div>
             <div className={classes.preview_close} onClick={()=>handleClosePreview()}></div>
           </div>
         )}

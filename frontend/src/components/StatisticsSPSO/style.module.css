@@ -1,0 +1,23 @@
+.container {
+    padding: 30px 50px;
+    /* overflow: scroll; */
+    height: auto;
+}
+
+.info {
+    /* height: 63px; */
+    margin-left: 10px;
+    margin-bottom: 20px;
+}
+
+.info_h {
+    font-size: 36px;
+    font-weight: 500;
+    text-transform: capitalize;
+}
+
+.info_p {
+    font-size: 14px;
+    font-weight: 600;
+    color: #828282;
+}

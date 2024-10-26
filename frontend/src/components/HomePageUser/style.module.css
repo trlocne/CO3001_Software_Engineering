@@ -476,7 +476,10 @@
     background: #F5F5F5;
     flex: 1;
 }
-
+iframe{
+    height: 100%;
+    width: 100%;
+}
 .preview_close {
     width: 50px;
     height: 13px;
