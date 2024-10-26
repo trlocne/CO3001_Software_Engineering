@@ -3,6 +3,7 @@
         font-family: Arial, sans-serif;
         padding: 2vh 3vw;
         size: 100%;
+        position: absolute;
 }
 
 /* Header */
@@ -63,7 +64,7 @@
 }
 
 /* Filter section */
-.filterSection {
+/* .filterSection {
         width: 110px;
         display: flex;
         align-items: center;
@@ -84,7 +85,124 @@
         border: none;
         margin: 0 8px;
         color: #555;
+} */
+.filterContainer {
+        position: relative;
+        display: inline-block;
 }
+
+.filterButton {
+        width: 110px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 5px 1px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+
+        color: #787486;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+        text-transform: capitalize;
+        gap: 10px;
+}
+
+.filterButton:hover {
+        box-shadow: 0px 0px 10px #8888;
+        transform: translateY(-1px);
+}
+
+.filterIcon1,
+.filterIcon2 {
+        width: 16px;
+        height: 16px;
+}
+
+.filterMenu {
+        position: absolute;
+        display: grid;
+        grid-template-rows: 1fr 1fr;
+        align-items: center;
+        top: 110%;
+        left: 0;
+        width: 300px;
+        background-color: rgba(50, 50, 50, 0.86);
+        backdrop-filter: blur(2px);
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        border-radius: 12px;
+        padding: 20px;
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+        z-index: 1000;
+        opacity: 1;
+        transform: translateY(-10px);
+        transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.filterMenu.show {
+        opacity: 1;
+        transform: translateY(0);
+}
+
+.filter1 {
+        grid-row: 1 / 2;
+}
+
+.filter2 {
+        grid-row: 2 / 3;
+}
+
+.filterOption {
+        margin-bottom: 10px;
+}
+
+.filterOption label {
+        display: block;
+        margin-bottom: 5px;
+        font-weight: bold;
+        font-size: 16px;
+        color: #ffffff;
+}
+
+.filterInput {
+        width: 100% !important;
+        height: 100% !important;
+        border: 1px solid rgba(255, 255, 255, 0.2) !important;
+        border-radius: 8px !important;
+        font-size: 15px !important;
+        background-color: rgba(255, 255, 255, 0.1) !important;
+        color: #ffffff !important;
+}
+
+.filterInput::placeholder {
+        color: rgba(255, 255, 255, 0.7);
+}
+
+.filterOption option {
+        background-color: rgba(38, 38, 38, 0.581);
+}
+
+.applyButton {
+        width: 100%;
+        padding: 12px;
+        background-color: #4CAF50;
+        border: none;
+        border-radius: 8px;
+        color: white;
+        cursor: pointer;
+        font-size: 16px;
+        transition: background-color 0.3s;
+        text-transform: uppercase;
+        font-weight: bold;
+}
+
+.applyButton:hover {
+        background-color: #45a049;
+}
+
 
 /* Main content - Printer dashboard */
 .printerDashboard {
@@ -94,6 +212,7 @@
         padding: 30px;
         border-radius: 10px;
         height: 65vh;
+        width: 79vw;
         overflow-y: auto;
 }
 
@@ -124,16 +243,15 @@
 
 .printerCardHeader {
         display: grid;
-        grid-template-columns: 1fr 1fr 1fr;
-        justify-content: center;
+        grid-template-columns: 1fr 1fr;
         align-items: center;
         margin-bottom: 10px;
 }
 
 .printerCardTitle {
-        font-size: 1.5rem;
+        font-size: 1.6rem;
         font-weight: bold;
-        justify-self: center;
+        margin-left: 15px;
 }
 
 .printerStatusIndicator {
@@ -142,39 +260,17 @@
         flex-shrink: 0;
         border-radius: 10px;
         background: #FF5C5C;
-        justify-self: end;
-}
-
-.cardDots {
-        background-color: rgba(0, 0, 0, 0);
-        justify-self: start;
+        margin-right: 10%;
         cursor: pointer;
-        transition: all 0.3s ease;
-        position: relative;
-        overflow: hidden;
 }
 
-.cardDots::before {
-        content: '';
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        /* background: rgba(255, 255, 255, 0.2); */
-        border-radius: 50%;
-        transform: translate(-50%, -50%) scale(0);
-        transition: transform 0.6s ease;
-        z-index: 0;
+.printerStatusIndicator:hover {
+        box-shadow: 0px 0px 10px rgba(140, 105, 105, 0.615);
 }
 
-.cardDots:hover::before {
-        transform: translate(-50%, -50%) scale(1);
+.printerStatusIndicator:active {
+        display: none;
 }
-
-.cardDots:hover {
-        /* box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); */
-        transform: translateY(-3px);
-}
-
 
 
 .printerCardDetails {
@@ -223,18 +319,21 @@
         grid-row: 3 / 4;
         display: grid;
         grid-template-rows: 1fr 1fr;
+        align-items: center;
 }
 
 .printerPages {
         grid-row: 1 / 2;
         display: grid;
-        grid-template-columns: 1fr 1.5fr;
+        grid-template-columns: 1fr 3fr;
+        align-items: center;
 }
 
 .printerInk {
         grid-row: 2 / 3;
         display: grid;
-        grid-template-columns: 1fr 1.5fr;
+        grid-template-columns: 1fr 3fr;
+        align-items: center;
 }
 
 .NumberOfPages {
@@ -242,110 +341,74 @@
         justify-self: center;
 }
 
-.PagesBar {
-        grid-column: 2 / 3;
-        width: 90%;
-        height: 10px;
-        background-color: #e0e0e0;
-        border-radius: 5px;
-        overflow: hidden;
-        position: relative;
-        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-}
-
-.PagesBarProgress {
-        height: 100%;
-        width: 70%;
-        background-color: #5cff66;
-        transition: width 0.5s ease, background-color 0.5s ease;
-        position: absolute;
-        left: 0;
-        border-radius: 5px;
-        box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.2);
-}
-
-.PagesBar:hover .PagesBarProgress {
-        background-color: #9cff9a;
-}
-
 .AmountOfInk {
         grid-column: 1 / 2;
         justify-self: center;
 }
 
-.InkBar {
+.PageProgressBar {
         grid-column: 2 / 3;
-        width: 90%;
-        height: 10px;
-        background-color: #e0e0e0;
-        border-radius: 5px;
-        overflow: hidden;
-        position: relative;
-        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
-.InkBarProgress {
-        height: 100%;
-        width: 60%;
-        background-color: #ff665c;
-        transition: width 0.5s ease, background-color 0.5s ease;
-        position: absolute;
-        left: 0;
-        border-radius: 5px;
-        box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.2);
+.InkProgressBar {
+        grid-column: 2 / 3;
 }
 
-.InkBar:hover .InkBarProgress {
-        background-color: #ff9a8b;
+.ProgressBar {
+        padding: 5px 7px;
+        margin-right: 10px;
 }
+
+
 
 
 /* Editable card */
 .editableCard {
-        background-color: rgba(255, 255, 255, 0.0);
+        background-color: rgba(27, 26, 26, 0.6);
+        backdrop-filter: blur(2px);
+        color: white;
 }
 
 .printerForm {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 10px;
+        display: flex;
+        flex-direction: column;
+}
+
+.printerForm label {
+        margin-bottom: 5px;
 }
 
 .printerInput {
-        padding: 6px;
-        border: 1px solid #ddd;
-        border-radius: 5px;
-        font-size: 14px;
+        padding: 10px !important;
+        border: 1px solid #ccc !important;
+        border-radius: 5px !important;
+        margin-bottom: 15px !important;
+        font-size: 16px !important;
+        transition: border-color 0.2s !important;
+        width: 100% !important;
+        height: 100% !important;
+        background-color: rgba(152, 146, 146, 0.4) !important;
+        backdrop-filter: blur(2px);
 }
 
+.printerInput:focus{
+        border: 2px solid #ffffff4d;
+}
+
+/* CSS cho nút Save */
 .printerSubmit {
-        grid-column: 2 / 3;
-        justify-self: end;
-        width: 40%;
-        padding: 3px 10px;
-        color: #000;
-        border: 1px solid #555;
-        border-radius: 5px;
+        padding: 12px;
+        background-color: #4CAF50;
+        color: white;
+        border: none;
+        border-radius: 8px;
+        font-size: 16px;
         cursor: pointer;
-        transition: 0.3s;
+        transition: background-color 0.4s;
+        font-weight: bold;
+        text-transform: uppercase;
 }
 
 .printerSubmit:hover {
-        box-shadow: 0 0 15px rgba(0, 0, 0, 0.284);
-}
-
-select {
-        padding: 10px;
-        border-radius: 5px;
-        border: 1px solid #ccc;
-        font-size: 16px;
-        /* background-color: #f5f5f5; */
-        color: #333;
-        cursor: pointer;
-        width: 200px;
-}
-
-select:focus {
-        border: 2px solid #000;
-        outline: none;
+        background-color: #45a049;
 }

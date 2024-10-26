@@ -1,10 +1,111 @@
-import React from 'react';
+import React, { useState } from 'react';
+import ProgressBar from "@ramonak/react-progress-bar";
 import classes from './style.module.css';
 
+
 export const ConfigPrint = () => {
+  // Progress Bar
+  const CustomProgressBar = ({
+    completed = 90,
+    maxCompleted = 100,
+    className = '', // Class mặc định
+    bgColor = "#5CFF66", // Màu nền mặc định
+    baseBgColor = "#f2f2f2",
+    height = "10px",
+    width = "95%",
+    borderRadius = "50px",
+    labelAlignment = "center",
+    isLabelVisible = true,
+    labelColor = "#555",
+    labelSize = "0.8rem",
+    transitionDuration = "2s",
+    transitionTimingFunction = "ease",
+    animateOnRender = true,
+  }) => {
+    return (
+      <ProgressBar
+        className={`custom-progress-bar ${className}`} // Kết hợp class
+        completed={completed}
+        maxCompleted={maxCompleted}
+        bgColor={bgColor}
+        baseBgColor={baseBgColor}
+        height={height}
+        width={width}
+        borderRadius={borderRadius}
+        labelAlignment={labelAlignment}
+        isLabelVisible={isLabelVisible}
+        labelColor={labelColor}
+        labelSize={labelSize}
+        transitionDuration={transitionDuration}
+        transitionTimingFunction={transitionTimingFunction}
+        animateOnRender={animateOnRender}
+      />
+    );
+  };
+
+  // Filter
+  const FilterMenu = ({ onFilter }) => {
+    const [showMenu, setShowMenu] = useState(false);
+    const [inkPercentage, setInkPercentage] = useState('');
+    const [status, setStatus] = useState('');
+
+    const toggleMenu = () => setShowMenu(!showMenu);
+
+    const applyFilter = () => {
+      onFilter({ inkPercentage, status });
+      setShowMenu(false);
+    };
+
+    return (
+      <div className={classes.filterContainer}>
+        <button onClick={toggleMenu} className={classes.filterButton}>
+          <svg className={classes.filterIcon1} xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+            <path d="M3.60006 1H12.4001C13.1334 1 13.7334 1.6 13.7334 2.33333V3.8C13.7334 4.33333 13.4001 5 13.0667 5.33333L10.2001 7.86667C9.80006 8.2 9.53339 8.86667 9.53339 9.4V12.2667C9.53339 12.6667 9.26672 13.2 8.93339 13.4L8.00006 14C7.13339 14.5333 5.93339 13.9333 5.93339 12.8667V9.33333C5.93339 8.86667 5.66672 8.26667 5.40006 7.93333L2.86672 5.26667C2.53339 4.93333 2.26672 4.33333 2.26672 3.93333V2.4C2.26672 1.6 2.86672 1 3.60006 1Z" stroke="#787486" strokeWidth="1.3" strokeMiterlimit="10" strokeLinecap="round" strokeLinejoin="round" />
+          </svg>
+          Filter
+          <svg className={classes.filterIcon2} xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+            <path d="M8.00001 11.1999C7.53335 11.1999 7.06668 11.0199 6.71335 10.6666L2.36668 6.31993C2.17335 6.12659 2.17335 5.8066 2.36668 5.61326C2.56001 5.41993 2.88001 5.41993 3.07335 5.61326L7.42001 9.95993C7.74001 10.2799 8.26001 10.2799 8.58001 9.95993L12.9267 5.61326C13.12 5.41993 13.44 5.41993 13.6333 5.61326C13.8267 5.8066 13.8267 6.12659 13.6333 6.31993L9.28668 10.6666C8.93335 11.0199 8.46668 11.1999 8.00001 11.1999Z" fill="#787486" />
+          </svg>
+        </button>
+
+        {showMenu && (
+          <div className={classes.filterMenu}>
+            <div className={`${classes.filterOption} ${classes.filter1}`}>
+              <label>Lọc theo tỷ lệ mực in (%):</label>
+              <input
+                type="number"
+                placeholder="Nhập tỷ lệ %"
+                value={inkPercentage}
+                onChange={(e) => setInkPercentage(e.target.value)}
+                className={classes.filterInput}
+              />
+            </div>
+            <div className={`${classes.filterOption} ${classes.filter2}`}>
+              <label>Lọc theo trạng thái hoạt động:</label>
+              <select
+                value={status}
+                onChange={(e) => setStatus(e.target.value)}
+                className={classes.filterInput}
+              >
+                <option value="active">Hoạt động</option>
+                <option value="inactive">Không hoạt động</option>
+              </select>
+            </div>
+            <button onClick={applyFilter} className={classes.applyButton}>Áp dụng</button>
+          </div>
+        )}
+      </div>
+    );
+  };
+  const handleFilter = (filters) => {
+    console.log('Lọc với các tiêu chí:', filters);
+    // Thực hiện hành động lọc với dữ liệu của bạn ở đây
+  };
+
+
+
   return (
     <div className={classes.configPrint}>
-
 
       {/* Header section */}
       <header className={classes.header}>
@@ -13,13 +114,10 @@ export const ConfigPrint = () => {
         {/* Filter button */}
         <div className={classes.filterAndSearch}>
           <div className={classes.filterSection}>
-            <svg className={classes.filterIcon1} xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
-              <path d="M3.60006 1H12.4001C13.1334 1 13.7334 1.6 13.7334 2.33333V3.8C13.7334 4.33333 13.4001 5 13.0667 5.33333L10.2001 7.86667C9.80006 8.2 9.53339 8.86667 9.53339 9.4V12.2667C9.53339 12.6667 9.26672 13.2 8.93339 13.4L8.00006 14C7.13339 14.5333 5.93339 13.9333 5.93339 12.8667V9.33333C5.93339 8.86667 5.66672 8.26667 5.40006 7.93333L2.86672 5.26667C2.53339 4.93333 2.26672 4.33333 2.26672 3.93333V2.4C2.26672 1.6 2.86672 1 3.60006 1Z" stroke="#787486" stroke-width="1.3" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
-            </svg>
-            <button className={classes.filterButton}>Filter</button>
-            <svg className={classes.filterIcon2} xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
-              <path d="M8.00001 11.1999C7.53335 11.1999 7.06668 11.0199 6.71335 10.6666L2.36668 6.31993C2.17335 6.12659 2.17335 5.8066 2.36668 5.61326C2.56001 5.41993 2.88001 5.41993 3.07335 5.61326L7.42001 9.95993C7.74001 10.2799 8.26001 10.2799 8.58001 9.95993L12.9267 5.61326C13.12 5.41993 13.44 5.41993 13.6333 5.61326C13.8267 5.8066 13.8267 6.12659 13.6333 6.31993L9.28668 10.6666C8.93335 11.0199 8.46668 11.1999 8.00001 11.1999Z" fill="#787486" />
-            </svg>
+            {/* <button className={classes.filterButton}>Filter</button> */}
+            <FilterMenu
+              onFilter={handleFilter}
+            />
           </div>
           {/* Search tool */}
           <div className={classes.headerSearch}>
@@ -31,12 +129,12 @@ export const ConfigPrint = () => {
               type="text"
               className={classes.headerSearchInput}
               placeholder="Search for Library..."
+            // value={searchTerm}
+            // onChange={handleSearchChange}
             />
           </div>
         </div>
       </header>
-
-
 
 
       {/* Main content section (grid of printer cards) */}
@@ -45,16 +143,6 @@ export const ConfigPrint = () => {
           {/* Printer card 1 */}
           <div className={classes.printerCard}>
             <div className={classes.printerCardHeader}>
-              <svg className={classes.cardDots} fill="#000000" width="25px" height="25px" viewBox="0 0 32.00 32.00" enable-background="new 0 0 32 32" id="Glyph" version="1.1" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" stroke="#000000" stroke-width="0.00032">
-                <g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round" stroke="#CCCCCC" stroke-width="0.768">
-                  <path d="M16,13c-1.654,0-3,1.346-3,3s1.346,3,3,3s3-1.346,3-3S17.654,13,16,13z" id="XMLID_287_"></path>
-                  <path d="M6,13c-1.654,0-3,1.346-3,3s1.346,3,3,3s3-1.346,3-3S7.654,13,6,13z" id="XMLID_289_"></path>
-                  <path d="M26,13c-1.654,0-3,1.346-3,3s1.346,3,3,3s3-1.346,3-3S27.654,13,26,13z" id="XMLID_291_"></path></g>
-                <g id="SVGRepo_iconCarrier">
-                  <path d="M16,13c-1.654,0-3,1.346-3,3s1.346,3,3,3s3-1.346,3-3S17.654,13,16,13z" id="XMLID_287_"></path>
-                  <path d="M6,13c-1.654,0-3,1.346-3,3s1.346,3,3,3s3-1.346,3-3S7.654,13,6,13z" id="XMLID_289_"></path>
-                  <path d="M26,13c-1.654,0-3,1.346-3,3s1.346,3,3,3s3-1.346,3-3S27.654,13,26,13z" id="XMLID_291_"></path></g>
-              </svg>
               <h2 className={classes.printerCardTitle}>H1-101</h2>
               <span className={classes.printerStatusIndicator}></span>
             </div>
@@ -74,17 +162,15 @@ export const ConfigPrint = () => {
               <div className={classes.printerProgress}>
                 <div className={classes.printerPages}>
                   <p className={classes.NumberOfPages}>Số giấy</p>
-                  <div className={classes.PagesBar}>
-                    <div className={classes.PagesBarProgress}></div>
-                  </div>
+                  <CustomProgressBar className={`${classes.PagesProgressBar} ${classes.ProgressBar}`}
+                    completed={70}
+                    bgColor={"#5CFF66"}
+                    labelAlignment="center" />
                 </div>
                 <div className={classes.printerInk}>
                   <p className={classes.AmountOfInk} >Số mực</p>
-                  <div className={classes.InkBar}>
-                    <div className={classes.InkBarProgress}></div>
-                  </div>
+                  <CustomProgressBar className={`${classes.InkProgressBar} ${classes.ProgressBar}`} completed={35} bgColor={"#FF665C"} />
                 </div>
-
               </div>
             </div>
           </div>
@@ -92,16 +178,6 @@ export const ConfigPrint = () => {
           {/* Printer card 2 */}
           <div className={classes.printerCard}>
             <div className={classes.printerCardHeader}>
-              <svg className={classes.cardDots} fill="#000000" width="25px" height="25px" viewBox="0 0 32.00 32.00" enable-background="new 0 0 32 32" id="Glyph" version="1.1" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" stroke="#000000" stroke-width="0.00032">
-                <g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round" stroke="#CCCCCC" stroke-width="0.768">
-                  <path d="M16,13c-1.654,0-3,1.346-3,3s1.346,3,3,3s3-1.346,3-3S17.654,13,16,13z" id="XMLID_287_"></path>
-                  <path d="M6,13c-1.654,0-3,1.346-3,3s1.346,3,3,3s3-1.346,3-3S7.654,13,6,13z" id="XMLID_289_"></path>
-                  <path d="M26,13c-1.654,0-3,1.346-3,3s1.346,3,3,3s3-1.346,3-3S27.654,13,26,13z" id="XMLID_291_"></path></g>
-                <g id="SVGRepo_iconCarrier">
-                  <path d="M16,13c-1.654,0-3,1.346-3,3s1.346,3,3,3s3-1.346,3-3S17.654,13,16,13z" id="XMLID_287_"></path>
-                  <path d="M6,13c-1.654,0-3,1.346-3,3s1.346,3,3,3s3-1.346,3-3S7.654,13,6,13z" id="XMLID_289_"></path>
-                  <path d="M26,13c-1.654,0-3,1.346-3,3s1.346,3,3,3s3-1.346,3-3S27.654,13,26,13z" id="XMLID_291_"></path></g>
-              </svg>
               <h2 className={classes.printerCardTitle}>H1-101</h2>
               <span className={classes.printerStatusIndicator}></span>
             </div>
@@ -121,17 +197,15 @@ export const ConfigPrint = () => {
               <div className={classes.printerProgress}>
                 <div className={classes.printerPages}>
                   <p className={classes.NumberOfPages}>Số giấy</p>
-                  <div className={classes.PagesBar}>
-                    <div className={classes.PagesBarProgress}></div>
-                  </div>
+                  <CustomProgressBar className={`${classes.PagesProgressBar} ${classes.ProgressBar}`}
+                    completed={70}
+                    bgColor={"#5CFF66"}
+                    labelAlignment="center" />
                 </div>
                 <div className={classes.printerInk}>
                   <p className={classes.AmountOfInk} >Số mực</p>
-                  <div className={classes.InkBar}>
-                    <div className={classes.InkBarProgress}></div>
-                  </div>
+                  <CustomProgressBar className={`${classes.InkProgressBar} ${classes.ProgressBar}`} completed={35} bgColor={"#FF665C"} />
                 </div>
-
               </div>
             </div>
           </div>
@@ -139,16 +213,6 @@ export const ConfigPrint = () => {
           {/* Printer card 3 */}
           <div className={classes.printerCard}>
             <div className={classes.printerCardHeader}>
-              <svg className={classes.cardDots} fill="#000000" width="25px" height="25px" viewBox="0 0 32.00 32.00" enable-background="new 0 0 32 32" id="Glyph" version="1.1" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" stroke="#000000" stroke-width="0.00032">
-                <g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round" stroke="#CCCCCC" stroke-width="0.768">
-                  <path d="M16,13c-1.654,0-3,1.346-3,3s1.346,3,3,3s3-1.346,3-3S17.654,13,16,13z" id="XMLID_287_"></path>
-                  <path d="M6,13c-1.654,0-3,1.346-3,3s1.346,3,3,3s3-1.346,3-3S7.654,13,6,13z" id="XMLID_289_"></path>
-                  <path d="M26,13c-1.654,0-3,1.346-3,3s1.346,3,3,3s3-1.346,3-3S27.654,13,26,13z" id="XMLID_291_"></path></g>
-                <g id="SVGRepo_iconCarrier">
-                  <path d="M16,13c-1.654,0-3,1.346-3,3s1.346,3,3,3s3-1.346,3-3S17.654,13,16,13z" id="XMLID_287_"></path>
-                  <path d="M6,13c-1.654,0-3,1.346-3,3s1.346,3,3,3s3-1.346,3-3S7.654,13,6,13z" id="XMLID_289_"></path>
-                  <path d="M26,13c-1.654,0-3,1.346-3,3s1.346,3,3,3s3-1.346,3-3S27.654,13,26,13z" id="XMLID_291_"></path></g>
-              </svg>
               <h2 className={classes.printerCardTitle}>H1-101</h2>
               <span className={classes.printerStatusIndicator}></span>
             </div>
@@ -168,17 +232,15 @@ export const ConfigPrint = () => {
               <div className={classes.printerProgress}>
                 <div className={classes.printerPages}>
                   <p className={classes.NumberOfPages}>Số giấy</p>
-                  <div className={classes.PagesBar}>
-                    <div className={classes.PagesBarProgress}></div>
-                  </div>
+                  <CustomProgressBar className={`${classes.PagesProgressBar} ${classes.ProgressBar}`}
+                    completed={70}
+                    bgColor={"#5CFF66"}
+                    labelAlignment="center" />
                 </div>
                 <div className={classes.printerInk}>
                   <p className={classes.AmountOfInk} >Số mực</p>
-                  <div className={classes.InkBar}>
-                    <div className={classes.InkBarProgress}></div>
-                  </div>
+                  <CustomProgressBar className={`${classes.InkProgressBar} ${classes.ProgressBar}`} completed={35} bgColor={"#FF665C"} />
                 </div>
-
               </div>
             </div>
           </div>
@@ -189,33 +251,30 @@ export const ConfigPrint = () => {
               <form className={classes.printerForm}>
                 <label htmlFor="name">Tên:</label>
                 <input
+                  className={classes.printerInput}
                   type="text"
                   id="name"
                   placeholder="H1-101"
-                  className={classes.printerInput}
                 />
-
                 <label htmlFor="status">Trạng thái:</label>
                 <select id="status" placeholder="Activate" className={classes.printerInput}>
                   <option value="active">Hoạt động</option>
                   <option value="inactive">Không hoạt động</option>
                 </select>
-
                 <label htmlFor="pages">Số trang in:</label>
                 <input
-                  type="number"
-                  id = "pages"
-                  placeholder="100"
                   className={classes.printerInput}
+                  type="number"
+                  id="pages"
+                  placeholder="100"
                 />
-
                 <button type="submit" className={classes.printerSubmit}>Save</button>
               </form>
             </div>
           </div>
-
         </div>
       </main>
+      
     </div>
   );
 };
