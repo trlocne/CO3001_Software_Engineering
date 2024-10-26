@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import classes from './style.module.css'
 import Folder_dublicate_duotone from '../../assets/Folder_dublicate_duotone.svg'
 import onProgressDot from '../../assets/onProgressDot.svg'
@@ -128,12 +128,10 @@ const document = [
     infoPrinter: "BE ơi"
   }
 
-<<<<<<< HEAD
 ];
 
-=======
->>>>>>> 3db48c86834bc3398ae9c140ac9f648da1bc100c
 export const HomePageUser = () => {
+  const [animationClass, setAnimationClass] = useState('');
   const nameUser = "Nguyen Van A";
   const numberHPage = 200;
   const numberPPage = 1000;
@@ -153,6 +151,20 @@ export const HomePageUser = () => {
   const handleClosePreview=()=>{
     setPreview(!preview);
   }
+  useEffect(() => {
+    if (preview) {
+      setAnimationClass(classes.zoomIn);
+      const timer = setTimeout(() => {
+        setAnimationClass('');
+      }, 300);
+
+      // const timer = setTimeout(() => {
+      //   setAnimationClass('');
+      // }, 3000);
+
+      return () => clearTimeout(timer);
+    }
+  }, [preview]);
   return (
     <div className={classes.container}>
       <div className={classes.info}>
@@ -212,7 +224,7 @@ export const HomePageUser = () => {
           ))}
         </div>
         {preview && (
-          <div className={classes.preview} >
+          <div className={`${classes.preview} ${animationClass}`} >
             <div className={classes.preview_info}>
               <div className={classes.info_title}>{docDetail.title}</div>
               <div className={classes.info_tag}>
