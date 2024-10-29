@@ -2,6 +2,8 @@ package hcmut.spss.be.entity.user;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import hcmut.spss.be.entity.document.Document;
 import hcmut.spss.be.security.service.UserDetailsImpl;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
@@ -81,4 +83,8 @@ public class User {
         this.password = password;
         this.phoneNumber = phoneNumber;
     }
+
+    @OneToMany(mappedBy = "student", fetch = FetchType.LAZY)
+    @JsonManagedReference
+    private List<Document> documents;
 }
