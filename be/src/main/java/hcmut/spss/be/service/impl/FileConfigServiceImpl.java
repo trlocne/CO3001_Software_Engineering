@@ -13,7 +13,7 @@ import org.springframework.stereotype.Service;
 @Service
 @RequiredArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
-public class FileConfigService {
+public class FileConfigServiceImpl {
 
     private FileConfigRepository repository;
 
