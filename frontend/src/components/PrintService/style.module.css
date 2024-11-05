@@ -9,13 +9,22 @@
   padding: 0;
 }
 
+.all {
+  overflow-y: scroll;
+  height: 100%;
+  margin-bottom: 100px;
+  overflow: auto;
+  margin-bottom: 50px;
+  display: grid;
+  grid-template-rows: auto;
+}
+
 :root {
   --grey-01: #f7f9fb;
   --grey-02: #e0e0e0;
   --grey-05: #242634;
   --blue: #4353ff;
   --box-shadow: rgba(25, 39, 89, 0.2);
-  overflow-y: auto;
 }
 
 .whole {
@@ -70,7 +79,8 @@
   line-height: 28px;
   font-weight: 600;
   transition: background-color 0.3s ease, box-shadow 0.3s ease;
-  user-select: none; /* Prevent text selection */
+  user-select: none;
+  /* Prevent text selection */
 }
 
 .uploadButton {
@@ -215,4 +225,129 @@
 .printConfigButton:active {
   transform: translateY(2px);
   box-shadow: 0 1px 1px rgba(0, 0, 0, 1), 0 5px 15px rgba(0, 0, 0, 0.4);
+}
+
+
+
+
+/* CONFIG PRINT */
+.wholeConfig {
+  grid-row: 2 / 3;
+  background-color: #555;
+  width: 100vw;
+  height: 100vh;
+  margin: auto;
+  margin-bottom: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 0.75rem;
+}
+
+.contentConfig {
+  width: 90%;
+  height: 90%;
+  background-color: powderblue;
+  /* margin: auto; */
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  grid-template-rows: 1fr 9fr 9fr;
+  gap: 10px;
+  padding: 10px;
+  box-sizing: border-box;
+  position: inline-block;
+}
+
+.redButton {
+  grid-column: 2 / 3;
+  grid-row: 1 / 2;
+  width: 50px;
+  height: 13px;
+  flex-shrink: 0;
+  border-radius: 10px;
+  background: #FF5C5C;
+  margin: auto 1px auto auto;
+}
+
+.printInformation {
+  grid-column: 1 / 2;
+  grid-row: 2 / 3;
+  background-color: pink;;
+}
+
+.screenPage {
+  grid-column: 2 / 3;
+  grid-row: 2 / 3;
+  background-color: burlywood;
+}
+
+.twoButtons {
+  grid-column: 2 / 3;
+  grid-row: 3 / 4;
+}
+
+.printInformation {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+}
+
+.block {
+  display: flex;
+  flex-direction: column;
+}
+
+.row {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.input {
+  flex: 1;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.inputSmall {
+  width: 100px;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.select {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.checkboxContainer {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 14px;
+}
+
+.fieldset {
+  border: 1px solid #ccc;
+  padding: 10px;
+  border-radius: 8px;
+  margin-top: 10px;
+}
+
+.legend {
+  font-weight: bold;
+  padding: 0 5px;
+}
+
+.radioGroup {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+  margin-top: 10px;
 }
