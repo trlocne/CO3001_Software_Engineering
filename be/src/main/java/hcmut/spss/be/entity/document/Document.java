@@ -1,6 +1,7 @@
 package hcmut.spss.be.entity.document;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import hcmut.spss.be.entity.sharedLibrary.SharedLibrary;
 import hcmut.spss.be.entity.user.User;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -53,4 +54,9 @@ public class Document {
     @JoinColumn(name = "student_id", referencedColumnName = "user_id")
     @JsonBackReference
     private User student;
+
+    @ManyToOne
+    @JoinColumn(name = "share_library")
+    @JsonBackReference
+    private SharedLibrary sharedLibrary;
 }
