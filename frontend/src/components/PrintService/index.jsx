@@ -87,7 +87,7 @@ export const PrintService = () => {
               <input type="text" placeholder="Số mặt in:" className={classes.input} />
             </div>
             {/* QR Code Checkbox */}
-            <div className={classes.row}>
+            <div className={classes.row}> 
               <label className={classes.checkboxContainer}>
                 <input type="checkbox" />
                 Tạo mã QR nhận
