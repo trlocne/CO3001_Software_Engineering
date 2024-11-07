@@ -91,7 +91,7 @@
     flex-direction: column;
   }
   .rightsize {
-    height: 538px;
+    height: 550px;
     width: 600px;
     background-color: #F5F5F5;
     margin-left: -50px;
@@ -128,7 +128,8 @@
   .shareButton {
     background-color: #4CAF50;
     color: white;
-    right: -494px
+    right: -494px;
+    bottom: -50px
   }
   .shareButton:hover {
     background-color: #2c8a2f;
@@ -139,7 +140,7 @@
     background-color: #2196F3;
     color: white;
     margin-right: 64px;
-    bottom: 66px;
+    bottom: 52px;
     right: 12px;
   }
 
@@ -180,9 +181,10 @@
   }
   .page_label {
     position: absolute;
-    top: -8px;
+    top: -12px;
     left: 20px;
-    background-color: #f9f9f9;
+    background-color: #fff;
+    padding-top: -5px;
   }
   .format {
     display: grid;
@@ -208,6 +210,7 @@
       grid-template-columns: 50% 50%;
     }
     .leftside2 {
+      margin-top: 10px;
       margin-left: 40px;
     }
     
