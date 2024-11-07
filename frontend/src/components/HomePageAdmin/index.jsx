@@ -117,7 +117,7 @@ export const HomePageAdmin = () => {
       username: e.target[2].value,
       password: e.target[3].value,
       usertype: e.target[4].selectedOptions[0].value,
-      detail: e.target[5].value
+      detail: e.target[5].value,
     }
     // fetch("http://localhost:3000/listUser", {
     //   method: "POST",
