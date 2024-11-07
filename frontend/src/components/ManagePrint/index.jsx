@@ -1,7 +1,5 @@
 import React from 'react';
 import classes from './style.module.css';
-import Swal from 'sweetalert2/dist/sweetalert2.js'
-import 'sweetalert2/src/sweetalert2.scss'
 export const ManagePrint = () => {
   // const inputRefs = useRef([]);
 
