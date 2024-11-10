@@ -10,7 +10,6 @@
 }
 
 .all {
-  overflow-y: scroll;
   height: 100%;
   margin-bottom: 100px;
   overflow: auto;
@@ -29,7 +28,7 @@
 
 .whole {
   width: 79vw;
-  height: 75vh;
+  height: 60vh;
   display: grid;
   grid-template-columns: 1fr 1.5fr;
   gap: 20px;
@@ -47,16 +46,22 @@
   box-shadow: 0px 0px 30px var(--box-shadow);
   padding: 20px;
   display: flex;
+  flex: 1;
   flex-direction: column;
+  gap: 5px;
 }
 
 .leftFrame {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
+  grid-column: 1/2;
+  display: grid;
+  grid-template-rows: 1fr 5fr 1fr;
+  justify-items: center;
+  height: 400px;
+  width: 100%;
 }
 
 .uploadSection {
+  grid-row: 1 / 2;
   margin: auto;
   display: flex;
   gap: 10px;
@@ -66,60 +71,55 @@
   padding: 5px;
   background: var(--grey-01);
   box-shadow: inset 0px 0px 3px rgba(48, 40, 40, 0.1);
-  /* border-bottom: 4px solid #ddd; */
+  height: 45px;
 }
 
 .uploadButton,
 .recentButton {
   width: 130px;
-  height: 30px;
-  border-radius: 40px;
+  height: 35px;
+  border-radius: 100px;
   cursor: pointer;
   text-align: center;
   line-height: 28px;
   font-weight: 600;
-  transition: background-color 0.3s ease, box-shadow 0.3s ease;
   user-select: none;
-  /* Prevent text selection */
-}
-
-.uploadButton {
-  color: var(--blue);
-  /* background-color: #fff; */
-  /* box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1); */
-}
-
-.recentButton {
-  color: #fff;
-  background-color: var(--blue);
-  /* box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1); */
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .uploadButton:active,
 .recentButton:active {
   transform: scale(0.98);
-  /* box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1); */
+}
+
+.activeButton {
+  background-color: #006eff;
+  color: white;
 }
 
 .fileList {
-  flex-grow: 1;
+  grid-row: 2/3;
   overflow-y: auto;
   display: flex;
   flex-direction: column;
-  margin-top: 10px;
+  height: 270px;
+  width: 100%;
   border-top: 2px solid #ddd;
   border-bottom: 2px solid #ddd;
-  cursor: pointer;
 }
 
 .fileItem {
-  display: flex;
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 10fr 2fr 0.5fr;
   align-items: center;
-  justify-content: space-between;
   padding: 15px;
   background-color: #fff;
   border-bottom: 1px solid #ddd;
   gap: 10px;
+  cursor: pointer;
 }
 
 .fileItem:hover {
@@ -127,40 +127,93 @@
   transition: all 0.1s ease;
 }
 
-.framepdf {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  z-index: 0;
-}
-
-.documentType {
-  display: flex;
-  align-items: center;
+.fileIcon {
+  grid-column: 1 / 2;
 }
 
 .fileName {
-  flex-grow: 1;
+  grid-column: 2 / 3;
   font-weight: 500;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
 }
 
 .fileSize {
+  grid-column: 3 / 4;
   color: #888;
   font-size: 0.9rem;
   padding: 1px 8px;
   border-radius: 2px;
   border: 1px solid var(--Grey-04, #CDD3D8);
+  white-space: nowrap;
+  /* overflow: hidden; */
 }
 
 .optionsButton {
-  background: none;
-  border: none;
+  grid-column: 4 / 5;
   font-size: 1.2em;
+  cursor: pointer;
+  width: 30px;
+  height: 30px;
+  padding: 0;
+  border-radius: 50px;
+  margin: auto;
+}
+
+.optionsButton:hover {
+  background-color: #3131340c;
+}
+
+/* Overlay for delete button */
+.overlay {
+  position: absolute;
+  top: 0;
+  right: -100px;
+  width: 140px;
+  height: 100%;
+  background: linear-gradient(90deg, rgba(230, 241, 252, 0), rgb(6, 96, 241) 100%);
+  display: flex;
+  align-items: center;
+  justify-content: end;
+  animation: slideIn 0.3s forwards;
+}
+
+@keyframes slideIn {
+  from {
+    right: -100px;
+    opacity: 0;
+  }
+
+  to {
+    right: 0;
+    opacity: 1;
+  }
+}
+
+.deleteButton {
+  background-color: #ff4d4f;
+  color: #fff;
+  border: none;
+  padding: 3px 20px;
+  border-radius: 50px;
+  margin-right: 20px;
   cursor: pointer;
 }
 
+.deleteButton:hover {
+  background-color: #ff7875;
+}
+
+/* .shrinkFileItem .fileName {
+  max-width: 60%; 
+  transition: max-width 0.3s ease;
+} */
+
 /* From Uiverse.io by elijahgummer */
 .viewAllButton {
+  grid-row: 3 / 4;
   position: relative;
   align-self: center;
   width: 10rem;
@@ -168,10 +221,8 @@
   font-size: 1rem;
   font-weight: bold;
   color: var(--Grey-05, #242634);
-  /* background: linear-gradient(to bottom, #5e67ccec, #0517d4); */
   border-radius: 100px;
   cursor: pointer;
-  /* box-shadow: 0 2px 3px rgba(0, 0, 0, 1), 0 10px 20px rgba(0, 0, 0, 0.4); */
   transition: all 0.1s ease;
   display: inline-flex;
   align-items: center;
@@ -185,9 +236,51 @@
   box-shadow: 0 1px 1px rgba(0, 0, 0, 1), 0 2px 10px rgba(0, 0, 0, 0.4);
 }
 
-.rightFrame {
-  width: 96%;
+.uploadArea {
+  width: 95%;
+  height: 95%;
+  grid-row: 2 / 4;
+  display: flex;
+  align-items: center;
+  justify-items: center;
+  justify-content: center;
+  border-radius: 24px;
+  border: 2px dashed var(--Grey-03, #E2E6EA);
+  cursor: pointer;
+  height: 300px;
+}
+
+.uploadArea:hover {
+  background-color: #f0f0f0;
+  border-color: #ccc;
+}
+
+.text {
+  font-size: 16px;
+  color: #555;
+}
+
+.uploadBox {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
   height: 100%;
+}
+
+.fileInput {
+  display: none;
+  cursor: pointer;
+}
+
+
+
+
+.rightFrame {
+  grid-column: 2/3;
+  width: 96%;
+  height: 500px;
   display: flex;
   flex-direction: column;
   gap: 20px;
@@ -210,7 +303,6 @@
   font-size: 1rem;
   font-weight: bold;
   color: #4353ff;
-  /* background: linear-gradient(to bottom, #5e67cca2, #0c1bc41f); */
   background: var(--Grey-01, #F7F9FB);
   border-radius: 90px;
   cursor: pointer;
@@ -225,129 +317,4 @@
 .printConfigButton:active {
   transform: translateY(2px);
   box-shadow: 0 1px 1px rgba(0, 0, 0, 1), 0 5px 15px rgba(0, 0, 0, 0.4);
-}
-
-
-
-
-/* CONFIG PRINT */
-.wholeConfig {
-  grid-row: 2 / 3;
-  background-color: #555;
-  width: 100vw;
-  height: 100vh;
-  margin: auto;
-  margin-bottom: 50px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 0.75rem;
-}
-
-.contentConfig {
-  width: 90%;
-  height: 90%;
-  background-color: powderblue;
-  /* margin: auto; */
-  display: grid;
-  grid-template-columns: 1fr 1.2fr;
-  grid-template-rows: 1fr 9fr 9fr;
-  gap: 10px;
-  padding: 10px;
-  box-sizing: border-box;
-  position: inline-block;
-}
-
-.redButton {
-  grid-column: 2 / 3;
-  grid-row: 1 / 2;
-  width: 50px;
-  height: 13px;
-  flex-shrink: 0;
-  border-radius: 10px;
-  background: #FF5C5C;
-  margin: auto 1px auto auto;
-}
-
-.printInformation {
-  grid-column: 1 / 2;
-  grid-row: 2 / 3;
-  background-color: pink;;
-}
-
-.screenPage {
-  grid-column: 2 / 3;
-  grid-row: 2 / 3;
-  background-color: burlywood;
-}
-
-.twoButtons {
-  grid-column: 2 / 3;
-  grid-row: 3 / 4;
-}
-
-.printInformation {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  padding: 20px;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-}
-
-.block {
-  display: flex;
-  flex-direction: column;
-}
-
-.row {
-  display: flex;
-  gap: 10px;
-  margin-bottom: 10px;
-}
-
-.input {
-  flex: 1;
-  padding: 8px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-}
-
-.inputSmall {
-  width: 100px;
-  padding: 8px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-}
-
-.select {
-  padding: 8px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-}
-
-.checkboxContainer {
-  display: flex;
-  align-items: center;
-  gap: 5px;
-  font-size: 14px;
-}
-
-.fieldset {
-  border: 1px solid #ccc;
-  padding: 10px;
-  border-radius: 8px;
-  margin-top: 10px;
-}
-
-.legend {
-  font-weight: bold;
-  padding: 0 5px;
-}
-
-.radioGroup {
-  display: flex;
-  gap: 15px;
-  align-items: center;
-  margin-top: 10px;
 }
