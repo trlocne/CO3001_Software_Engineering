@@ -3,7 +3,13 @@ package hcmut.spss.be.entity.user;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import hcmut.spss.be.entity.discount.Discount;
 import hcmut.spss.be.entity.document.Document;
+import hcmut.spss.be.entity.notification.Notification;
+import hcmut.spss.be.entity.payment.Payment;
+import hcmut.spss.be.entity.printJob.PrintJob;
+import hcmut.spss.be.entity.printLog.PrintLog;
+import hcmut.spss.be.entity.report.Report;
 import hcmut.spss.be.security.service.UserDetailsImpl;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
@@ -30,12 +36,12 @@ public class User {
     private Long userId;
 
     @NotBlank
-    @Size(min=3, max=50)
+    @Size(min = 3, max = 50)
     @Column(name = "username", unique = true)
     private String username;
 
     @NotBlank
-    @Size(min=3, max=100)
+    @Size(min = 3, max = 100)
     @Column(name = "name")
     private String name;
 
@@ -48,7 +54,7 @@ public class User {
     @Column(name = "mssv", unique = true)
     private String mssv;
 
-    @Size(min=3)
+    @Size(min = 3)
     @Column(name = "password")
     @JsonIgnore
     private String password;
@@ -60,8 +66,8 @@ public class User {
     @Column(name = "avatar_url")
     private String avatarUrl;
 
-    private boolean enabled=true;
-    private boolean online=false;
+    private boolean enabled = true;
+    private boolean online = false;
 
     @CreationTimestamp
     @Column(updatable = false)
@@ -87,4 +93,28 @@ public class User {
     @OneToMany(mappedBy = "student", fetch = FetchType.LAZY)
     @JsonManagedReference
     private List<Document> documents;
+
+    @OneToMany(mappedBy = "student")
+    @JsonManagedReference
+    private List<Payment> paymentList;
+
+    @OneToMany(mappedBy = "student")
+    @JsonManagedReference
+    private List<PrintJob> printJobList;
+
+    @OneToOne
+    @JoinColumn(name = "log_id")
+    private PrintLog printLog;
+
+    @OneToMany(mappedBy = "spso")
+    @JsonManagedReference
+    private List<Discount> discountList;
+
+    @OneToMany(mappedBy = "spso")
+    @JsonManagedReference
+    private List<Notification> notificationList;
+
+    @OneToMany(mappedBy = "spso")
+    @JsonManagedReference
+    private List<Report> reportList;
 }
