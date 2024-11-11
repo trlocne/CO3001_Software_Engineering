@@ -5,11 +5,12 @@ import classes from './style.module.css';
 
 /////////////////////////////////// GENERAL /////////////////////////////////////////////////////////////////////////////////////////
 //----------Filter----------------------------------------------------
-const FilterMenu = ({ onFilter }) => {
+const FilterMenu = ({ onFilter, onReset }) => {
   const [showMenu, setShowMenu] = useState(false);
   const [inkRange, setInkRange] = useState({ min: '', max: '' });
   const [paperRange, setPaperRange] = useState({ min: '', max: '' });
   const [status, setStatus] = useState('');
+  const filterRef = useRef(null);
 
   const toggleMenu = () => setShowMenu(!showMenu);
 
@@ -22,8 +23,50 @@ const FilterMenu = ({ onFilter }) => {
     setShowMenu(false);
   };
 
+  const resetFilters = () => {
+    setInkRange({ min: '', max: '' });
+    setPaperRange({ min: '', max: '' });
+    setStatus('');
+    onReset(); // Reset all filters in parent component
+  };
+
+  const hasFilterData = () => {
+    return (
+      inkRange.min || inkRange.max || paperRange.min || paperRange.max || status
+    );
+  };
+
+  const handleClickOutside = (event) => {
+    if (filterRef.current && !filterRef.current.contains(event.target)) {
+      if (hasFilterData()) {
+        const confirmExit = window.confirm(
+          'Bạn có muốn giữ lại các dữ liệu đã nhập để tiếp tục lọc không?'
+        );
+        if (!confirmExit) {
+          resetFilters();
+        } else {
+          setShowMenu(true); // Keep menu open
+          return;
+        }
+      }
+      setShowMenu(false);
+    }
+  };
+
+  useEffect(() => {
+    if (showMenu) {
+      document.addEventListener('mousedown', handleClickOutside);
+    } else {
+      document.removeEventListener('mousedown', handleClickOutside);
+    }
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [showMenu]);
+
+
   return (
-    <div className={classes.filterContainer}>
+    <div className={classes.filterContainer} ref={filterRef}>
       <button onClick={toggleMenu} className={classes.filterButton}>
         <svg className={classes.filterIcon1} xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
           <path d="M3.60006 1H12.4001C13.1334 1 13.7334 1.6 13.7334 2.33333V3.8C13.7334 4.33333 13.4001 5 13.0667 5.33333L10.2001 7.86667C9.80006 8.2 9.53339 8.86667 9.53339 9.4V12.2667C9.53339 12.6667 9.26672 13.2 8.93339 13.4L8.00006 14C7.13339 14.5333 5.93339 13.9333 5.93339 12.8667V9.33333C5.93339 8.86667 5.66672 8.26667 5.40006 7.93333L2.86672 5.26667C2.53339 4.93333 2.26672 4.33333 2.26672 3.93333V2.4C2.26672 1.6 2.86672 1 3.60006 1Z" stroke="#787486" strokeWidth="1.3" strokeMiterlimit="10" strokeLinecap="round" strokeLinejoin="round" />
@@ -81,7 +124,10 @@ const FilterMenu = ({ onFilter }) => {
               <option value="inactive">Không hoạt động</option>
             </select>
           </div>
-          <button onClick={applyFilter} className={classes.applyButton}>Áp dụng</button>
+          <div className={classes.applyresetButton}>
+            <button onClick={resetFilters} className={`${classes.resetButton} ${classes.applyReset}`}>Bỏ lọc</button>
+            <button onClick={applyFilter} className={`${classes.applyButton} ${classes.applyReset}`}>Áp dụng</button>
+          </div>
         </div>
       )}
     </div>
@@ -299,11 +345,18 @@ export const ConfigPrint = () => {
     paperRange: { min: '', max: '' },
     status: ''
   });
-  
-  const [searchTerm, setSearchTerm] = useState('');
 
   const handleFilter = (newFilters) => {
     setFilters(newFilters);
+  };
+
+  const resetFilters = () => {
+    setFilters({
+      inkRange: { min: '', max: '' },
+      paperRange: { min: '', max: '' },
+      status: ''
+    });
+    setSearchTerm('');
   };
 
   const applyFilters = (printer) => {
@@ -318,6 +371,8 @@ export const ConfigPrint = () => {
 
     return inkInRange && paperInRange && statusMatch && titleMatch;
   };
+
+  const [searchTerm, setSearchTerm] = useState('');
 
   const handleSearchChange = (event) => {
     setSearchTerm(event.target.value);
@@ -349,7 +404,7 @@ export const ConfigPrint = () => {
         <div className={classes.filterAndSearch}>
           {/* Filter button */}
           <div className={classes.filterSection}>
-            <FilterMenu onFilter={handleFilter} />
+            <FilterMenu onFilter={handleFilter} onReset={resetFilters} />
           </div>
           {/* Search tool */}
           <div className={classes.headerSearch}>

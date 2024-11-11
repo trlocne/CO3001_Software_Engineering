@@ -147,12 +147,19 @@
         background-color: rgba(232, 231, 231, 0.581);
 }
 
-.applyButton {
+
+.applyresetButton {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+}
+
+.applyReset {
         padding: 7px;
         width: 45%;
-        margin-left: auto;
-        margin-top: 10px;
-        background-color: #4CAF50;
+        
         border: none;
         border-radius: 8px;
         color: white;
@@ -163,8 +170,20 @@
         font-weight: bold;
 }
 
+.applyButton {
+        background-color: rgba(43, 180, 50, 0.926)
+}
+
 .applyButton:hover {
-        background-color: #45a049;
+        background-color: #43a148;
+}
+
+.resetButton {
+        background-color: #67676393;
+}
+
+.resetButton:hover {
+        background-color: #676763e7;
 }
 
 
