@@ -1,39 +1,49 @@
 package hcmut.spss.be.controller;
 
-import hcmut.spss.be.request.ApiResponse;
-import hcmut.spss.be.request.FileConfigRequest;
-import hcmut.spss.be.response.FileConfigResponse;
+import hcmut.spss.be.entity.fileConfig.FileConfig;
 import hcmut.spss.be.service.FileConfigService;
-import lombok.AccessLevel;
-import lombok.RequiredArgsConstructor;
-import lombok.experimental.FieldDefaults;
-import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
-@RequestMapping("/api/fileconfig")
-@RequiredArgsConstructor
-@FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
-@Slf4j
+@RequestMapping("/api/file-configs")
 public class FileConfigController {
 
-    FileConfigService service;
+    private final FileConfigService fileConfigService;
 
-    @PostMapping("/new")
-    public ApiResponse<FileConfigResponse> createFileConfig(@RequestBody FileConfigRequest request) {
-        return ApiResponse.<FileConfigResponse>builder()
-                .result(FileConfigService.createFileConfig(request))
-                .build();
+    @Autowired
+    public FileConfigController(FileConfigService fileConfigService) {
+        this.fileConfigService = fileConfigService;
+    }
+
+    @PostMapping("/post")
+    public ResponseEntity<FileConfig> createFileConfig(@RequestBody FileConfig fileConfig) {
+        return ResponseEntity.ok(fileConfigService.createFileConfig(fileConfig));
     }
 
     @GetMapping("/{id}")
-    public FileConfigResponse getFileConfig(@PathVariable Long id) {
-        return service.getFileConfig(id);
+    public ResponseEntity<FileConfig> getFileConfigById(@PathVariable Long id) {
+        return fileConfigService.getFileConfigById(id)
+                .map(ResponseEntity::ok)
+                .orElse(ResponseEntity.notFound().build());
+    }
+
+    @GetMapping
+    public ResponseEntity<List<FileConfig>> getAllFileConfigs() {
+        return ResponseEntity.ok(fileConfigService.getAllFileConfigs());
     }
 
     @PutMapping("/{id}")
-    public FileConfigResponse updateFileConfig(@PathVariable Long id, @RequestBody FileConfigRequest request) {
-        return service.updateFileConfig(id, request);
+    public ResponseEntity<FileConfig> updateFileConfig(@PathVariable Long id, @RequestBody FileConfig fileConfig) {
+        return ResponseEntity.ok(fileConfigService.updateFileConfig(id, fileConfig));
     }
 
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteFileConfig(@PathVariable Long id) {
+        fileConfigService.deleteFileConfig(id);
+        return ResponseEntity.noContent().build();
+    }
 }

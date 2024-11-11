@@ -1,37 +1,55 @@
 package hcmut.spss.be.service.impl;
 
 import hcmut.spss.be.entity.fileConfig.FileConfig;
-import hcmut.spss.be.mapper.FileConfigMapper;
 import hcmut.spss.be.repository.FileConfigRepository;
-import hcmut.spss.be.request.FileConfigRequest;
-import hcmut.spss.be.response.FileConfigResponse;
-import lombok.AccessLevel;
-import lombok.RequiredArgsConstructor;
-import lombok.experimental.FieldDefaults;
+import hcmut.spss.be.service.FileConfigService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+import java.util.Optional;
+
 @Service
-@RequiredArgsConstructor
-@FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
-public class FileConfigServiceImpl {
+public class FileConfigServiceImpl implements FileConfigService {
 
-    private FileConfigRepository repository;
+    private final FileConfigRepository fileConfigRepository;
 
-    private FileConfigMapper mapper;
-
-    public FileConfigResponse createFileConfig(FileConfigRequest request) {
-        FileConfig fileConfig = mapper.toFileConfig(request);
-        return mapper.toFileConfigResponse(repository.save(fileConfig));
+    @Autowired
+    public FileConfigServiceImpl(FileConfigRepository fileConfigRepository) {
+        this.fileConfigRepository = fileConfigRepository;
     }
 
-    public FileConfigResponse getFileConfig(Long id) {
-        FileConfig fileConfig = repository.findById(id).orElseThrow(() -> new RuntimeException("File Properties not found"));
-        return mapper.toFileConfigResponse(fileConfig);
+    @Override
+    public FileConfig createFileConfig(FileConfig fileConfig) {
+        return fileConfigRepository.save(fileConfig);
     }
 
-    public FileConfigResponse updateFileConfig(Long id, FileConfigRequest request) {
-        FileConfig existingProperties = repository.findById(id).orElseThrow(() -> new RuntimeException("File Properties not found"));
-        mapper.updateFileConfig(request, existingProperties);
-        return mapper.toFileConfigResponse(repository.save(existingProperties));
+    @Override
+    public Optional<FileConfig> getFileConfigById(Long id) {
+        return fileConfigRepository.findById(id);
+    }
+
+    @Override
+    public List<FileConfig> getAllFileConfigs() {
+        return fileConfigRepository.findAll();
+    }
+
+    @Override
+    public FileConfig updateFileConfig(Long id, FileConfig updatedFileConfig) {
+        return fileConfigRepository.findById(id).map(fileConfig -> {
+            fileConfig.setPapersize(updatedFileConfig.getPapersize());
+            fileConfig.setPaperRange(updatedFileConfig.getPaperRange());
+            fileConfig.setSides(updatedFileConfig.getSides());
+            fileConfig.setNumberOfCopies(updatedFileConfig.getNumberOfCopies());
+            fileConfig.setLayout(updatedFileConfig.getLayout());
+            fileConfig.setColor(updatedFileConfig.getColor());
+            fileConfig.setDocument(updatedFileConfig.getDocument());
+            return fileConfigRepository.save(fileConfig);
+        }).orElseThrow(() -> new RuntimeException("FileConfig not found with id " + id));
+    }
+
+    @Override
+    public void deleteFileConfig(Long id) {
+        fileConfigRepository.deleteById(id);
     }
 }
