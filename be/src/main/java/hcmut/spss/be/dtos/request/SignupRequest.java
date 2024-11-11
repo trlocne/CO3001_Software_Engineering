@@ -1,4 +1,4 @@
-package hcmut.spss.be.request;
+package hcmut.spss.be.dtos.request;
 
 import hcmut.spss.be.entity.user.Role;
 import jakarta.validation.constraints.Email;
@@ -27,7 +27,7 @@ public class SignupRequest {
     @Email
     private String email;
 
-    private Set<String> roles;
+    private String role;
 
     @NotBlank
     @Size(min = 3)
@@ -36,4 +36,7 @@ public class SignupRequest {
     @NotBlank
     @Size(max = 11)
     private String phone;
+
+    @NotBlank
+    private String mssv;
 }

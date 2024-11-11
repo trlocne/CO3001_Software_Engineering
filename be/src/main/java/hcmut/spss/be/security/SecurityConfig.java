@@ -1,14 +1,8 @@
 package hcmut.spss.be.security;
 
-import hcmut.spss.be.entity.user.AppRole;
-import hcmut.spss.be.entity.user.Role;
-import hcmut.spss.be.entity.user.User;
-import hcmut.spss.be.repository.RoleRepository;
-import hcmut.spss.be.repository.UserRepository;
 import hcmut.spss.be.security.jwt.AuthEntryPointJwt;
 import hcmut.spss.be.security.jwt.AuthTokenFilter;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -16,7 +10,6 @@ import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
-import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
@@ -83,19 +76,5 @@ public class SecurityConfig {
     @Bean
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
-    }
-
-    @Bean
-    public CommandLineRunner initData(RoleRepository roleRepository) {
-        return args -> {
-            Role userRole = roleRepository.findByRoleName(AppRole.STUDENT)
-                    .orElseGet(() -> roleRepository.save(new Role(AppRole.STUDENT)));
-
-            Role adminRole = roleRepository.findByRoleName(AppRole.ADMIN)
-                    .orElseGet(() -> roleRepository.save(new Role(AppRole.ADMIN)));
-
-            Role spsoRole = roleRepository.findByRoleName(AppRole.SPSO)
-                    .orElseGet(() -> roleRepository.save(new Role(AppRole.SPSO)));
-        };
     }
 }
