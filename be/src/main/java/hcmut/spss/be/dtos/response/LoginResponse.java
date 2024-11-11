@@ -1,4 +1,4 @@
-package hcmut.spss.be.response;
+package hcmut.spss.be.dtos.response;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

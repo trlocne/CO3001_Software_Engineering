@@ -1,6 +1,6 @@
 package hcmut.spss.be.security.jwt;
 
-import hcmut.spss.be.security.service.UserDetailsImpl;
+import hcmut.spss.be.service.impl.UserDetailsImpl;
 import io.jsonwebtoken.ExpiredJwtException;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.MalformedJwtException;
@@ -43,8 +43,10 @@ public class JwtUtils {
         String roles = userDetails.getAuthorities().stream()
                 .map(GrantedAuthority::getAuthority)
                 .collect(Collectors.joining(","));
+        String email = userDetails.getEmail();
         return Jwts.builder()
                 .subject(username)
+                .claim("email", email)
                 .claim("roles", roles)
                 .issuedAt(new Date())
                 .expiration(new Date((new Date()).getTime() + jwtExpirationMs))

@@ -1,4 +1,4 @@
-package hcmut.spss.be.security.service;
+package hcmut.spss.be.service.impl;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import hcmut.spss.be.entity.user.User;
@@ -40,7 +40,7 @@ public class UserDetailsImpl implements UserDetails {
     }
 
     public static UserDetailsImpl build(User user) {
-        GrantedAuthority authority = new SimpleGrantedAuthority(user.getRole().getRoleName().name());
+        GrantedAuthority authority = new SimpleGrantedAuthority(user.getRole().name());
 
         return new UserDetailsImpl(
                 user.getUserId(),

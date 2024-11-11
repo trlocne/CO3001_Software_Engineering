@@ -10,11 +10,8 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
-import javax.print.Doc;
 import java.io.IOException;
 import java.util.List;
-import java.util.Map;
-import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/files")
@@ -27,11 +24,10 @@ public class FileController {
     private DocumentService documentService;
 
     @PostMapping("/upload")
-    public ResponseEntity<?> uploadFile(@RequestBody MultipartFile file, @AuthenticationPrincipal UserDetails userDetails) {
+    public ResponseEntity<?> uploadFile(@RequestBody MultipartFile file) {
         try {
-            String username = userDetails.getUsername();
             // Upload file và lưu thông tin vào DB
-            Document uploadedFile = cloudinaryService.uploadFile(file, username);
+            Document uploadedFile = cloudinaryService.uploadFile(file);
 
             // Trả về thông tin file đã lưu trong DB
             return ResponseEntity.ok(uploadedFile);

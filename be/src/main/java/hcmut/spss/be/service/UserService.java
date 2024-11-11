@@ -1,6 +1,5 @@
 package hcmut.spss.be.service;
 
-import hcmut.spss.be.dtos.UserDTO;
 import hcmut.spss.be.entity.user.User;
 
 import java.util.List;
@@ -11,11 +10,8 @@ public interface UserService {
 
     List<User> getAllUsers();
 
-    UserDTO getUserById(Long id);
 
     User findByUsername(String username);
 
     Optional<User> findByEmail(String email);
-
-    User registerUser(User user);
 }

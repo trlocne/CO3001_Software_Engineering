@@ -1,4 +1,4 @@
-package hcmut.spss.be.request;
+package hcmut.spss.be.dtos.request;
 
 import lombok.Getter;
 import lombok.Setter;

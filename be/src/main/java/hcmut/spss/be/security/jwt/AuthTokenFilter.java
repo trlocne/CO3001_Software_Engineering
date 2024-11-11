@@ -1,6 +1,6 @@
 package hcmut.spss.be.security.jwt;
 
-import hcmut.spss.be.security.service.UserDetailsServiceImpl;
+import hcmut.spss.be.service.impl.UserDetailsServiceImpl;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;

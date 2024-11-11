@@ -1,4 +1,4 @@
-package hcmut.spss.be.security.service;
+package hcmut.spss.be.service.impl;
 
 import hcmut.spss.be.entity.user.User;
 import hcmut.spss.be.repository.UserRepository;
