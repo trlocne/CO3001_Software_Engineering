@@ -19,8 +19,8 @@ import lombok.experimental.FieldDefaults;
 public class FileConfig {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "file_Id")
-    Long fileId;
+    @Column(name = "id")
+    Long id;
 
     @Enumerated(EnumType.STRING)
     @Column(name = "paper_size")
@@ -33,7 +33,7 @@ public class FileConfig {
     @Column(name = "sides")
     Sides sides;
 
-    @Column(name = "num_copies")
+    @Column(name = "number_of_copies")
     int numberOfCopies;
 
     @Enumerated(EnumType.STRING)
@@ -45,6 +45,7 @@ public class FileConfig {
 
     @OneToOne
     @JoinColumn(name = "document_id")
+    @JsonBackReference
     Document document;
 
     @ManyToOne
