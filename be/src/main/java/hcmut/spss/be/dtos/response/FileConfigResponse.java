@@ -26,7 +26,7 @@ import lombok.NoArgsConstructor;
                         .id(fileConfig.getId())
                         .fileId(fileConfig.getDocument().getDocumentId())
                         .fileName(fileConfig.getDocument().getDocumentName())
-                        .paperSize(fileConfig.getSides().name())
+                        .paperSize(fileConfig.getPaperSize().name())
                         .paperRange(fileConfig.getPaperRange())
                         .sides(fileConfig.getSides().name())
                         .numberOfCopies(fileConfig.getNumberOfCopies())
