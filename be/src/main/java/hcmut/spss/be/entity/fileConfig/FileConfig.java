@@ -47,8 +47,4 @@ public class FileConfig {
     @JoinColumn(name = "document_id")
     @JsonBackReference
     Document document;
-
-    @ManyToOne
-    @JoinColumn(name = "student_id", referencedColumnName = "user_id")
-    User student;
 }

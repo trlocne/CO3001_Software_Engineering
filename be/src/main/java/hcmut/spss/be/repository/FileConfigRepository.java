@@ -10,7 +10,7 @@ import java.util.List;
 
 @Repository
 public interface FileConfigRepository extends JpaRepository<FileConfig, Long> {
-    @Query(value = "select fc.id, fc.papersize, fc.paper_range, fc.sides, fc.number_of_copies, fc.layout, fc.color, fc.document_id from file_config fc " +
+    @Query(value = "select fc.id, fc.paper_size, fc.paper_range, fc.sides, fc.number_of_copies, fc.layout, fc.color, fc.document_id from file_config fc " +
             "inner join documents d on fc.document_id = d.document_id " +
             "where d.student_id = :id", nativeQuery = true)
     List<FileConfig> findAllByStudentId(@Param("id") Long id);
