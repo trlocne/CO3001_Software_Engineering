@@ -10,7 +10,7 @@ export const PrintService = () => {
     { name: '2-diem-lich-su-dang.doc', size: '604KB', type: 'word' },
     { name: '2-diem-lich-su-dang-phan-1-11-dvrwf-acascd-a-c.xlsx', size: '604KB', type: 'excel' },
     { name: 'Chi-Dan-Chich-Xi-Ke-Thay_Ghe-Qua-Di-Nam-Em-Mai-Dinh-Em-Yeu-Truong-Em1.doc', size: '604KB', type: 'image' },
-    { name: 'Chi-Dan-Chich-Xi-Ke-Thay_Ghe-Qua-Di-Nam-Em-Mai-Dinh-Em-Yeu-Truong-Em2.doc', size: '604KB', type: 'pdf' },
+    { name: 'Chi-Dan-Chich-Xi-Ke.pptx', size: '604KB', type: 'ppt' },
     { name: 'Chi-Dan-Chich-Xi-Ke-Thay_Ghe-Qua-Di-Nam-Em-Mai-Dinh-Em-Yeu-Truong-Em3.doc', size: '604KB', type: 'word' },
   ]);
 
@@ -66,6 +66,8 @@ export const PrintService = () => {
         fileType = 'text';
       } else if (file.type.includes('excel') || file.name.endsWith('.xlsx')) {
         fileType = 'excel';
+      } else if (file.type.includes('ppt') || file.name.endsWith('.ppt') ||  file.name.endsWith('.pptx')) {
+        fileType = 'ppt';
       } else {
         fileType = 'other';
       }
@@ -78,6 +80,10 @@ export const PrintService = () => {
     setFiles([...files, ...uploadedFiles]);
     setIsUploadMode(false); // Return to recent view after upload
   };
+
+
+
+
 
 
   return (
@@ -128,6 +134,7 @@ export const PrintService = () => {
                   {file.type === 'word' && (<svg className={classes.fileIcon} width="18" height="18" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" style={{ fill: '#000000' }}><g id="SVGRepo_bgCarrier" strokeWidth="0"></g><g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round"></g><g id="SVGRepo_iconCarrier"><title>file_type_word2</title><path style={{ fill: '#283c82' }} d="M18.536,2.323V4.868c3.4.019,7.12-.035,10.521.019a.783.783,0,0,1,.912.861c.054,6.266-.013,12.89.032,19.157-.02.4.009,1.118-.053,1.517-.079.509-.306.607-.817.676-.286.039-.764.034-1.045.047-2.792-.014-5.582-.011-8.374-.01l-1.175,0v2.547L2,27.133Q2,16,2,4.873L18.536,2.322"></path><path style={{ fill: '#fff' }} d="M18.536,5.822h10.5V26.18h-10.5V23.635h8.27V22.363h-8.27v-1.59h8.27V19.5h-8.27v-1.59h8.27V16.637h-8.27v-1.59h8.27V13.774h-8.27v-1.59h8.27V10.911h-8.27V9.321h8.27V8.048h-8.27V5.822"></path><path style={{ fill: '#fff' }} d="M8.573,11.443c.6-.035,1.209-.06,1.813-.092.423,2.147.856,4.291,1.314,6.429.359-2.208.757-4.409,1.142-6.613.636-.022,1.272-.057,1.905-.1-.719,3.082-1.349,6.19-2.134,9.254-.531.277-1.326-.013-1.956.032-.423-2.106-.916-4.2-1.295-6.314C8.99,16.1,8.506,18.133,8.08,20.175q-.916-.048-1.839-.111c-.528-2.8-1.148-5.579-1.641-8.385.544-.025,1.091-.048,1.635-.067.328,2.026.7,4.043.986,6.072.448-2.08.907-4.161,1.352-6.241"></path></g></svg>)}
                   {file.type === 'excel' && (<svg className={classes.fileIcon} width="20" height="20" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 48 48"><rect width="16" height="9" x="28" y="15" fill="#21a366"></rect><path fill="#185c37" d="M44,24H12v16c0,1.105,0.895,2,2,2h28c1.105,0,2-0.895,2-2V24z"></path><rect width="16" height="9" x="28" y="24" fill="#107c42"></rect><rect width="16" height="9" x="12" y="15" fill="#3fa071"></rect><path fill="#33c481" d="M42,6H28v9h16V8C44,6.895,43.105,6,42,6z"></path><path fill="#21a366" d="M14,6h14v9H12V8C12,6.895,12.895,6,14,6z"></path><path d="M22.319,13H12v24h10.319C24.352,37,26,35.352,26,33.319V16.681C26,14.648,24.352,13,22.319,13z" opacity=".05"></path><path d="M22.213,36H12V13.333h10.213c1.724,0,3.121,1.397,3.121,3.121v16.425	C25.333,34.603,23.936,36,22.213,36z" opacity=".07"></path><path d="M22.106,35H12V13.667h10.106c1.414,0,2.56,1.146,2.56,2.56V32.44C24.667,33.854,23.52,35,22.106,35z" opacity=".09"></path><linearGradient id="flEJnwg7q~uKUdkX0KCyBa_UECmBSgBOvPT_gr1" x1="4.725" x2="23.055" y1="14.725" y2="33.055" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#18884f"></stop><stop offset="1" stop-color="#0b6731"></stop></linearGradient><path fill="url(#flEJnwg7q~uKUdkX0KCyBa_UECmBSgBOvPT_gr1)" d="M22,34H6c-1.105,0-2-0.895-2-2V16c0-1.105,0.895-2,2-2h16c1.105,0,2,0.895,2,2v16	C24,33.105,23.105,34,22,34z"></path><path fill="#fff" d="M9.807,19h2.386l1.936,3.754L16.175,19h2.229l-3.071,5l3.141,5h-2.351l-2.11-3.93L11.912,29H9.526	l3.193-5.018L9.807,19z"></path> </svg>)}
                   {file.type === 'image' && (<svg className={classes.fileIcon} width="20" height="20" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 48 48"><path fill="#90CAF9" d="M40 45L8 45 8 3 30 3 40 13z"></path><path fill="#E1F5FE" d="M38.5 14L29 14 29 4.5z"></path><path fill="#1565C0" d="M21 23L14 33 28 33z"></path><path fill="#1976D2" d="M28 26.4L23 33 33 33zM31.5 23A1.5 1.5 0 1 0 31.5 26 1.5 1.5 0 1 0 31.5 23z"></path></svg>)}
+                  {file.type === 'ppt' && (<svg className={classes.fileIcon} width="18" height="18" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" fill="#000000"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><title>file_type_powerpoint2</title><path d="M18.536,2.321V5.184c3.4.019,7.357-.035,10.754.016.642,0,.67.568.678,1.064.054,5.942-.013,12.055.032,18-.012.234-.006,1.1-.013,1.346-.022.823-.434.859-1.257.884-.132,0-.52.006-.648.012-3.181-.016-6.362-.009-9.546-.009v3.182L2,27.134Q2,16,2,4.873L18.536,2.322" style={{ fill: '#d33922' }}></path><path d="M18.536,6.138h10.5v19.4h-10.5V23H26.17V21.725H18.536V20.135H26.17V18.863H18.539c0-.624,0-1.247-.006-1.87a4.467,4.467,0,0,0,3.82-.375,4.352,4.352,0,0,0,1.959-3.474c-1.4-.01-2.793-.006-4.186-.006,0-1.384.016-2.767-.029-4.148-.522.1-1.043.21-1.562.321V6.139" style={{fill: '#fff'}}></path><path d="M20.766,8.324a4.476,4.476,0,0,1,4.186,4.167c-1.4.016-2.793.01-4.189.01,0-1.393,0-2.787,0-4.177" style={{ fill: '#d33922' }}></path><path d="M7.1,10.726c1.727.083,3.82-.684,5.252.611,1.371,1.664,1.008,4.724-1.024,5.719A4.7,4.7,0,0,1,9,17.348c0,1.244-.006,2.488,0,3.731-.63-.054-1.263-.108-1.893-.159-.029-3.4-.035-6.8,0-10.2" style={{ fill: '#fff' }}></path><path d="M8.993,12.446c.627-.029,1.4-.143,1.826.445a2.308,2.308,0,0,1,.041,2.087c-.363.655-1.183.592-1.816.668-.067-1.066-.06-2.131-.051-3.2" style={{ fill: '#d33922' }}></path></g></svg>)}
                   {file.type === 'other' && (<svg className={classes.fileIcon} width="18" height="18" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"> <path d="M21 19V5a2 2 0 00-2-2H5a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2zM5 4h14a1 1 0 011 1v10.586L15.707 10.293a1 1 0 00-1.414 0L8 16.586V5a1 1 0 00-1-1z" fill="#000" /> </svg>)}
                   <span className={classes.fileName}>{file.name}</span>
                   <span className={classes.fileSize}>{file.size}</span>
