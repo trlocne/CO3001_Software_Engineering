@@ -17,21 +17,24 @@ import lombok.experimental.FieldDefaults;
 public class FileConfig {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "fileID")
-    Long fileID;
+    @Column(name = "id")
+    Long id;
 
+    @Enumerated(EnumType.STRING)
     @Column(name = "papersize")
     PaperSize papersize;
 
     @Column(name = "paperRange")
     String paperRange;
 
+    @Enumerated(EnumType.STRING)
     @Column(name = "sides")
     Sides sides;
 
     @Column(name = "numberOfCopies")
     int numberOfCopies;
 
+    @Enumerated(EnumType.STRING)
     @Column(name = "layout")
     Layout layout;
 

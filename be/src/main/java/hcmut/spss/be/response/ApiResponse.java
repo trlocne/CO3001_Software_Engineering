@@ -1,4 +1,4 @@
-package hcmut.spss.be.request;
+package hcmut.spss.be.response;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 

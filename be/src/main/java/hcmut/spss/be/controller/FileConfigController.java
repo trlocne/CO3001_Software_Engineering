@@ -1,6 +1,8 @@
 package hcmut.spss.be.controller;
 
-import hcmut.spss.be.entity.fileConfig.FileConfig;
+import hcmut.spss.be.request.FileConfigRequest;
+import hcmut.spss.be.response.FileConfigResponse;
+import hcmut.spss.be.response.MessageResponse;
 import hcmut.spss.be.service.FileConfigService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -20,30 +22,43 @@ public class FileConfigController {
     }
 
     @PostMapping("/post")
-    public ResponseEntity<FileConfig> createFileConfig(@RequestBody FileConfig fileConfig) {
-        return ResponseEntity.ok(fileConfigService.createFileConfig(fileConfig));
+    public ResponseEntity<?> createFileConfig(@RequestParam Long fileId, @RequestBody FileConfigRequest request) {
+        try {
+            return ResponseEntity.ok(fileConfigService.createFileConfig(request, fileId));
+        }catch (Exception e) {
+            return ResponseEntity.badRequest().body(new MessageResponse(e.getMessage()));
+        }
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<FileConfig> getFileConfigById(@PathVariable Long id) {
-        return fileConfigService.getFileConfigById(id)
-                .map(ResponseEntity::ok)
-                .orElse(ResponseEntity.notFound().build());
+    public ResponseEntity<?> getFileConfigById(@PathVariable Long id) {
+        try {
+            return ResponseEntity.ok(fileConfigService.getFileConfigById(id));
+        }catch (Exception e) {
+            return ResponseEntity.badRequest().body(new MessageResponse(e.getMessage()));
+        }
     }
 
-    @GetMapping
-    public ResponseEntity<List<FileConfig>> getAllFileConfigs() {
-        return ResponseEntity.ok(fileConfigService.getAllFileConfigs());
+    @GetMapping("")
+    public ResponseEntity<List<FileConfigResponse>> getAllFileConfigsOfCurrentUser() {
+        return ResponseEntity.ok(fileConfigService.getAllFileConfigsOfCurrentUser());
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<FileConfig> updateFileConfig(@PathVariable Long id, @RequestBody FileConfig fileConfig) {
-        return ResponseEntity.ok(fileConfigService.updateFileConfig(id, fileConfig));
+    public ResponseEntity<?> updateFileConfig(@PathVariable Long id, @RequestBody FileConfigRequest request) {
+        try {
+            return ResponseEntity.ok(fileConfigService.updateFileConfig(id, request));
+        }catch (Exception e) {
+            return ResponseEntity.badRequest().body(new MessageResponse(e.getMessage()));
+        }
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteFileConfig(@PathVariable Long id) {
-        fileConfigService.deleteFileConfig(id);
-        return ResponseEntity.noContent().build();
+    public ResponseEntity<?> deleteFileConfig(@PathVariable Long id) {
+        try {
+            return ResponseEntity.ok(fileConfigService.deleteFileConfig(id));
+        }catch (Exception e) {
+            return ResponseEntity.badRequest().body(new MessageResponse(e.getMessage()));
+        }
     }
 }
