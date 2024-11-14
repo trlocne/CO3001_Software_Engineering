@@ -35,9 +35,6 @@ public class Printer {
     @Column(name = "status_printer")
     Status statusPrinter;
 
-    @Column(name = "queue_number")
-    int queueNumber;
-
     @Column(name = "description")
     String description;
 
