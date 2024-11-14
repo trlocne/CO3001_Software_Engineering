@@ -223,10 +223,10 @@ export const ConfigSPSO = () => {
   }
   const submitConfig = (e) => {
     e.preventDefault();
-    const newConfigFile = {
-      sizefile: e.target[0].selectedOptions[0].value,
-      typeFile: typeFiles
-    }
+    // const newConfigFile = {
+    //   sizefile: e.target[0].selectedOptions[0].value,
+    //   typeFile: typeFiles
+    // }
     // fetch("http://localhost:3000/configFile/1", {
     //   method: "PATCH",
     //   headers: {

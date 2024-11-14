@@ -195,13 +195,17 @@ tbody tr {
     flex-direction: row;
 }
 
-/* .btn_save {
+.btn_save {
     border: 1px solid #787486;
     border-radius: 6px;
     width: 130px;
     height: 37px;
-    margin-top: 24px;
-} */
+    margin-top: 27px;
+}
+.btn_save:hover{
+    box-shadow: 0px 0px 10px #8888;
+    transform: translateY(-1px);
+}
 
 /* .btn_save {
     cursor: pointer;
