@@ -217,12 +217,12 @@ export const Library = () => {
             <div className={classes.preview_info}>
               <div className={classes.info_title}>{docDetail.title}</div>
               {/* <div className={classes.info_tag}>
-                <div className={`${classes.info_status} ${docDetail.status === "Completed" ? classes.info_completed : classes.info_onProgress}`}>
+                <div className={`${classes.info_status} ${docDetail.status ====== "Completed" ? classes.info_completed : classes.info_onProgress}`}>
                   {docDetail.status}
                 </div>
                 <div className={classes.info_share}>Share</div>
               </div> */}
-              <div className="flex flex-row">
+              <div className="flex-row flex ">
               {docDetail.tags.map((tag, idx) => (
                 <div
                   key={idx}
