@@ -89,7 +89,6 @@
 .pPage_title {
     color: #5E5498;
     font-feature-settings: 'liga' off, 'clig' off;
-    font-family: Inter;
     font-size: 16px;
     font-style: normal;
     font-weight: 700;
@@ -100,7 +99,6 @@
 .pPage_number {
     color: #5E5498;
     font-feature-settings: 'liga' off, 'clig' off;
-    font-family: Inter;
     font-size: 18.321px;
     font-style: normal;
     font-weight: 700;
@@ -171,7 +169,6 @@
 
 .doc_title {
     color: #404040;
-    font-family: Inter;
     font-size: 12px;
     font-style: normal;
     font-weight: 700;
@@ -186,7 +183,6 @@
 
 .doc_status {
     color: #787486;
-    font-family: Inter;
     font-size: 10px;
     font-style: normal;
     font-weight: 500;
@@ -200,7 +196,6 @@
 
 .doc_loc {
     color: #787486;
-    font-family: Inter;
     font-size: 10px;
     font-style: normal;
     font-weight: 500;
@@ -230,7 +225,6 @@
 
 .doc_time {
     color: #787486;
-    font-family: Inter;
     font-size: 10px;
     font-style: normal;
     font-weight: 500;
@@ -248,7 +242,6 @@
     top: 8px;
     right: 15px;
     color: #0D062D;
-    font-family: Inter;
     font-size: 16px;
     font-style: normal;
     font-weight: 800;
@@ -283,7 +276,6 @@
 
 .info_title {
     color: #404040;
-    font-family: Inter;
     font-size: 24px;
     font-style: normal;
     font-weight: 700;
@@ -299,7 +291,6 @@
 .info_status {
     border-radius: 4px;
     padding: 4px 6px;
-    font-family: Inter;
     font-size: 12px;
     font-style: normal;
     font-weight: 800;
@@ -319,7 +310,6 @@
 
 .info_share {
     color: #4957D5;
-    font-family: Inter;
     font-size: 12px;
     font-style: normal;
     font-weight: 800;
@@ -339,7 +329,6 @@
 
 .info_loc {
     color: #787486;
-    font-family: Inter;
     font-size: 10px;
     font-style: normal;
     font-weight: 500;
@@ -353,7 +342,6 @@
 
 .info_time {
     color: #787486;
-    font-family: Inter;
     font-size: 10px;
     font-style: normal;
     font-weight: 500;
@@ -380,7 +368,6 @@
 
 .quantity_label {
     color: #404040;
-    font-family: Inter;
     font-size: 10px;
     font-style: normal;
     font-weight: 500;
@@ -406,7 +393,6 @@
 
 .category_label {
     color: #404040;
-    font-family: Inter;
     font-size: 10px;
     font-style: normal;
     font-weight: 500;
@@ -435,7 +421,6 @@
 
 .printer_label {
     color: #404040;
-    font-family: Inter;
     font-size: 10px;
     font-style: normal;
     font-weight: 500;
@@ -460,7 +445,6 @@
     border-radius: 6px;
     border: 1px solid #787486;
     color: #787486;
-    font-family: Inter;
     font-size: 11px;
     font-style: normal;
     font-weight: 500;

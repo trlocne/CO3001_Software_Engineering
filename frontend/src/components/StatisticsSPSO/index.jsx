@@ -25,7 +25,9 @@ export const StatisticsSPSO = () => {
             <div className={classes.nav_student}>Học sinh</div>
             <button className={classes.btn_download}> Download</button>
           </div>
-          <div className={classes.viewReport}></div>
+          <div className={classes.viewReport}>
+            <iframe src="https://docs.google.com/spreadsheets/d/1M2BP_CO1MWbFOmEW2KDObXlcT6ikj-duraUHKWF92Yg/edit?pli=1&gid=0#gid=0"></iframe>
+          </div>
         </div>
         <div className={classes.close}></div>
       </div>
