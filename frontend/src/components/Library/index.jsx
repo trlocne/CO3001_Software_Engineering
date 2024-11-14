@@ -222,7 +222,7 @@ export const Library = () => {
                 </div>
                 <div className={classes.info_share}>Share</div>
               </div> */}
-              <div className="flex-row flex ">
+              <div className="flex flex-row">
               {docDetail.tags.map((tag, idx) => (
                 <div
                   key={idx}
