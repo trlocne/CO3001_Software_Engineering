@@ -1,0 +1,156 @@
+.container {
+    padding: 30px 50px;
+    /* overflow: scroll; */
+    height: auto;
+}
+
+.info {
+    /* height: 63px; */
+    margin-left: 10px;
+    margin-bottom: 20px;
+}
+
+.info_h {
+    font-size: 36px;
+    font-weight: 500;
+    text-transform: capitalize;
+}
+
+.info_p {
+    font-size: 14px;
+    font-weight: 600;
+    color: #828282;
+}
+
+.body {
+    border-radius: 10px;
+    background: #FFF;
+    box-shadow: 0px 4px 39px 9px rgba(69, 67, 82, 0.09);
+    height: 650px;
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.header_ {
+    display: flex;
+    flex-direction: row;
+}
+
+.statistics {
+    color: #0D062D;
+    font-size: 28px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    text-transform: capitalize;
+    width: 250px;
+}
+
+.sandf {
+    display: flex;
+    flex-direction: row;
+
+}
+
+.filter {
+    border-radius: 6px;
+    border: 1px solid #787486;
+    width: 120px;
+    height: 40px;
+    outline: none;
+    color: #787486;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    text-transform: capitalize;
+    padding-left: 1cap;
+    padding-right: 15px;
+    margin-left: 5px;
+    margin-right: 20px;
+}
+
+.search {
+    border-radius: 6px;
+    background: #F5F5F5;
+    width: 280px;
+    height: 40px;
+    padding-left: 15px;
+    padding-right: 15px;
+    color: #787486;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.body_view {
+    display: flex;
+    flex-direction: row;
+    flex: 1;
+    margin-top: 20px;
+}
+
+.statis_nav {
+    display: flex;
+    flex-direction: column;
+    width: 250px;
+    position: relative;
+}
+
+.nav_countAccess {
+    color: var(--DMV-Black, #23262F);
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    margin-top: 25px;
+}
+
+.nav_student {
+    color: var(--DMV-Black, #23262F);
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    margin-top: 17px;
+}
+
+.btn_download {
+    border-radius: 6px;
+    border: 1px solid #787486;
+    width: 120px;
+    height: 40px;
+    color: #787486;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    text-transform: capitalize;
+    color: #787486;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    text-transform: capitalize;
+    position: absolute;
+    bottom: 20px;
+    /* right: center; */
+}
+
+.viewReport {
+    border-radius: 15px;
+    background: #F5F5F5;
+    flex: 1;
+}
+.close{
+    width: 50px;
+    height: 13px;
+    border-radius: 10px;
+    background: #FF5C5C;
+    position: absolute;
+    top: 24px;
+    right: 36px;
+}
