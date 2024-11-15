@@ -69,68 +69,68 @@ export const HomePage = () => {
       </div>
 
       <div className= 'bg-[#062251] w-100vm max-h-[270px] text-white text-sm py-[3em] px-[5em] font-bold'>
-      <div className='flex flex-row justify-between h-[220px]'>
+      <div className='flex flex-row justify-between h-[220px] text-white'>
         <div className='lg:flex flex-col w-[20%] hidden'>
           <img src={logo} className=' h-[90px] w-[130px]'/>  
-          <div className='p-[5px] leading-[23px]'>
+          <div className='p-[5px] leading-[23px] text-white'>
           Trang web HCMUT-SSPS thuộc khuôn khổ môn học Công nghệ phầm mềm
            của các bạn học sinh trường đại học Bách Khoa, Đại học Quốc gia TPHCM
           </div>         
         </div>
-        <div className='lg:flex-col lg:flex hidden'>
-          <div className='text-xl font-bold pb-[1em]'>
+        <div className='lg:flex-col lg:flex hidden '>
+          <div className='text-xl font-bold pb-[1em] text-white'>
             Services
           </div>
           <ul>
-            <li className='pb-[0.75em] '>
+            <li className='pb-[0.75em] text-white'>
               Customers
             </li>
-            <li className='pb-[0.75em]'>
+            <li className='pb-[0.75em] text-white'>
               Collaboratiors
             </li>
           </ul>
         </div>
 
         <div className='lg:flex-col lg:flex hidden'>
-          <div className='text-xl pb-[1em] font-bold'>
+          <div className='text-xl pb-[1em] font-bold text-white'>
             School
           </div>
           <ul>
-            <li className='pb-[0.75em]'>
+            <li className='pb-[0.75em] text-white'>
               About Us
             </li>
-            <li className='pb-[0.75em]'>
+            <li className='pb-[0.75em] text-white'>
               Our Team
             </li>
           </ul>
         </div>
 
         <div className='lg:flex-col lg:flex hidden'>
-          <div className='text-xl pb-[1em] font-bold'>
+          <div className='text-xl pb-[1em] font-bold text-white'>
             Suppport
           </div>
           <ul>
-            <li className='pb-[0.75em]'>
+            <li className='pb-[0.75em] text-white'>
               FAQs
             </li>
-            <li className='pb-[0.75em]'>
+            <li className='pb-[0.75em] text-white'>
               Privacy Policy
             </li>
           </ul>
         </div>
 
         <div className='flex-col lg:w-[25%]'>
-          <div className='text-xl pb-[1em] font-bold'>
+          <div className='text-xl pb-[1em] font-bold text-white'>
             Contact Us
           </div>
           <ul>
-            <li className='pb-[0.75em]'>
+            <li className='pb-[0.75em] text-white'>
               Email: example@hcmut.edu.vn
             </li>
-            <li className='pb-[0.75em]'>
+            <li className='pb-[0.75em] text-white'>
               Call: +84 1234 5678
             </li>
-            <li className='pb-[0.75em]'>
+            <li className='pb-[0.75em] text-white'>
             Address: Trường đại học Bách khoa, 
             Đại học quốc gia TPHCM, Đông hoà, Dĩ an, Bình Dương.
             </li>
@@ -138,7 +138,7 @@ export const HomePage = () => {
         </div>
       </div>
 
-      </div>
+    </div>
     </div>
     
   )
