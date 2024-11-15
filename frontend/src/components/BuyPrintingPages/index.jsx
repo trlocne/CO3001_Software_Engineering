@@ -14,7 +14,7 @@ export const BuyPrintingPages = () => {
     let giaTrang = 1000; // Price per page: 1000 vnd
     let tongTienGiay = soTrang * giaTrang;
     setTongTienGiay(tongTienGiay);
-    setTongThanhToan(tongTienGiay - giamGia); // Total after discount
+    setTongThanhToan(tongTienGiay - giamGia >= 0 ? tongTienGiay - giamGia : 0); // Total after discount
   }, [soTrang, giamGia]);
 
   // Handle button click to set number of pages
@@ -97,8 +97,9 @@ export const BuyPrintingPages = () => {
       {/* Payment Modal */}
       {showPaymentModal && (
         <div className="modal-overlay" onClick={handleCloseModal}>
-          <div className="modal-content" onClick={(e) => e.stopPropagation()}>
-            <h2>Phương thức thanh toán</h2>
+          <div className="modal-content relative" onClick={(e) => e.stopPropagation()}>
+            <h2 className='font-bold pt-[20px]'>Phương thức thanh toán</h2>
+            <div className="payment-options">
             <button className="payment-option">
               <img src={momo} alt="Momo" />
               Momo
@@ -107,7 +108,8 @@ export const BuyPrintingPages = () => {
               <img src={bk} alt="BK Pay" />
               BK Pay
             </button>
-            <button className="cancel-btn" onClick={handleCloseModal}>Hủy</button>
+            </div>
+            <button className="absolute top-[15px] right-[15px] w-[40px] h-[10px] rounded-[10px] bg-[#FF5C5C]" onClick={handleCloseModal}/>
           </div>
         </div>
       )}
