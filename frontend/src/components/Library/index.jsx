@@ -1,11 +1,165 @@
-import React from 'react'
-import classes from './style.module.css'
-import cal from '../../assets/calendar.svg'
+import React, { useState, useEffect } from 'react';
+import classes from './style.module.css';
+import Folder_dublicate_duotone from '../../assets/Folder_dublicate_duotone.svg';
+import calendar_Phong from '../../assets/calendar_Phong.svg';
+import location from '../../assets/location.svg';
+
+const document = [
+  {
+    id: 1,
+    title: "Tài liệu 1",
+    status: "On Progress",
+    location: "Tầng 1- GDH6",
+    time: "18:25 - 01/01/2024",
+    field: "CSCE",
+    course: "CO1004",
+    quantity: "15",
+    category: "Math",
+    infoPrinter: "BE ơi",
+    tags: ["Math", "HK241"]
+  },
+
+  {
+    id: 1,
+    title: "Tài liệu 1",
+    status: "On Progress",
+    location: "Tầng 1- GDH6",
+    time: "18:25 - 01/01/2024",
+    field: "CSCE",
+    course: "CO1004",
+    quantity: "15",
+    category: "Math",
+    infoPrinter: "BE ơi",
+    tags: ["Math", "HK241"]
+  },
+
+  {
+    id: 1,
+    title: "Tài liệu 1",
+    status: "On Progress",
+    location: "Tầng 1- GDH6",
+    time: "18:25 - 01/01/2024",
+    field: "CSCE",
+    course: "CO1004",
+    quantity: "15",
+    category: "Math",
+    infoPrinter: "BE ơi",
+    tags: ["Math", "HK241"]
+  },
+
+  {
+    id: 1,
+    title: "Tài liệu 1",
+    status: "On Progress",
+    location: "Tầng 1- GDH6",
+    time: "18:25 - 01/01/2024",
+    field: "CSCE",
+    course: "CO1004",
+    quantity: "15",
+    category: "Math",
+    infoPrinter: "BE ơi",
+    tags: ["Math", "HK241"]
+  },
+
+  {
+    id: 1,
+    title: "Tài liệu 1",
+    status: "On Progress",
+    location: "Tầng 1- GDH6",
+    time: "18:25 - 01/01/2024",
+    field: "CSCE",
+    course: "CO1004",
+    quantity: "15",
+    category: "Math",
+    infoPrinter: "BE ơi",
+    tags: ["Math", "HK241"]
+  },
+
+  {
+    id: 1,
+    title: "Tài liệu 1",
+    status: "On Progress",
+    location: "Tầng 1- GDH6",
+    time: "18:25 - 01/01/2024",
+    field: "CSCE",
+    course: "CO1004",
+    quantity: "15",
+    category: "Math",
+    infoPrinter: "BE ơi",
+    tags: ["Math", "HK241"]
+  },
+
+  {
+    id: 1,
+    title: "Tài liệu 1",
+    status: "On Progress",
+    location: "Tầng 1- GDH6",
+    time: "18:25 - 01/01/2024",
+    field: "CSCE",
+    course: "CO1004",
+    quantity: "15",
+    category: "Math",
+    infoPrinter: "BE ơi",
+    tags: ["Math", "HK241"]
+  },
+
+  {
+    id: 1,
+    title: "Tài liệu 1",
+    status: "On Progress",
+    location: "Tầng 1- GDH6",
+    time: "18:25 - 01/01/2024",
+    field: "CSCE",
+    course: "CO1004",
+    quantity: "15",
+    category: "Math",
+    infoPrinter: "BE ơi",
+    tags: ["Math", "HK241"]
+  },
+
+  {
+    id: 1,
+    title: "Tài liệu 1",
+    status: "On Progress",
+    location: "Tầng 1- GDH6",
+    time: "18:25 - 01/01/2024",
+    field: "CSCE",
+    course: "CO1004",
+    quantity: "15",
+    category: "Math",
+    infoPrinter: "BE ơi",
+    tags: ["Math", "HK241"]
+  },
+  // Add additional documents as needed
+];
+
 export const Library = () => {
+  const [animationClass, setAnimationClass] = useState('');
+  const [selectHK, setSelectHK] = useState("All");
+  const [docDetail, setDocDetail] = useState([]);
+  const [preview, setPreview] = useState(false);
+
+  const handleFilter = (e) => setSelectHK(e.target.value);
+  
+  const handlePreview = (docId) => {
+    const selectedDoc = document.find(doc => doc.id === docId);
+    setDocDetail(selectedDoc);
+    setPreview(!preview);
+  }
+
+  const handleClosePreview = () => setPreview(false);
+
+  useEffect(() => {
+    if (preview) {
+      setAnimationClass(classes.zoomIn);
+      const timer = setTimeout(() => setAnimationClass(''), 300);
+      return () => clearTimeout(timer);
+    }
+  }, [preview]);
+
   return (
-  <div className='ml-[40px] w-[1000] h-full'> 
-    {/* Header section */}
-    <header className={classes.header}>
+    <div className={classes.container}>
+      <header className={classes.header}>
     <div className={classes.filterAndSearch}>
           <div className={classes.filterSection}>
             <svg className={classes.filterIcon1} xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
@@ -30,325 +184,94 @@ export const Library = () => {
           </div>
         </div>
         </header>
-
-
-        <div class="mr-[20px] grid grid-rows-4 grid-flow-col gap-9 h-[550px] bg-[#F5F5F5] p-[35px] rounded-[25px]">
-
-        <div className='flex flex-col bg-[#FFFFFF] rounded-[16px] px-[15px] py-[7px] shadow-xl'>
-          <div className='flex flex-row justify-start items-center h-[40px] w-full mb-[3px]'>
-            <div className='w-[40%] font-Inter font-semibold text-sm'>
-                Tài liệu 1
+      
+      <div className={classes.body}>
+      <div className="mr-[20px] grid grid-rows-4 grid-flow-col gap-9 h-[550px] bg-[#F5F5F5] p-[35px] rounded-[25px]">
+        {document.map(item => (
+          <div key={item.id} className="flex flex-col bg-[#FFFFFF] rounded-[16px] px-[15px] py-[7px] shadow-xl"  onClick={() => handlePreview(item.id)}>
+            <div className="flex flex-row justify-start items-center h-[40px] w-full mb-[3px]">
+              <div className="w-[40%] font-Inter font-semibold text-sm">{item.title}</div>
+              <div className="flex flex-row items-center">
+                <img src={calendar_Phong} className="h-[17px] w-[17px]" alt="calendar icon" />
+                <div className="text-[#787486] font-Inter mx-[10px] text-sm">{item.time}</div>
+                <button onClick={() => handlePreview(item.id)} className="text-[#0D062D] text-2xl font-bold mb-[27px]">...</button>
+              </div>
             </div>
-            <div className='flex flex-row items-center'>
-                <img src={cal} className='h-[17px] w-[17px]'></img>
-                <div className='text-[#787486] font-Inter mx-[10px] text-sm'>
-                18: 25 - 01/01/2024
+            <div className="flex flex-row">
+              {item.tags.map((tag, idx) => (
+                <div
+                  key={idx}
+                  className={`h-[23px] w-[46px] rounded-[4px] bg-opacity-30 text-xs text-center pt-[2.5px] mr-[12px] ${
+                    tag === 'Math' ? 'bg-[#83C29D33] text-[#68B266]' : 'bg-[#74ADDF33] text-[#4957D5]'
+                  }`}
+                >
+                  {tag}
                 </div>
-                <div>
-                  <button className='text-[#0D062D] text-2xl font-bold mb-[27px]'>...</button>
-                </div>
+              ))}
             </div>
           </div>
+        ))}
 
-          <div className='flex flex-row '>
-            <div className='h-[23px] w-[46px] rounded-[4px] bg-[#83C29D33] bg-opacity-30 text-xs text-center pt-[2.5px] text-[#68B266] mr-[12px]'>
-                Math
-            </div>
-            <div className='h-[23px] w-[46px] rounded-[4px] bg-[#74ADDF33] bg-opacity-30 text-xs text-center pt-[2.5px] text-[#4957D5]'>
-                HK241
-            </div>
-          </div>
-        </div>
-
-
-        <div className='flex flex-col bg-[#FFFFFF] rounded-[16px] px-[15px] py-[7px] shadow-xl'>
-          <div className='flex flex-row justify-start items-center h-[40px] w-full mb-[3px]'>
-            <div className='w-[40%] font-Inter font-semibold text-sm'>
-                Tài liệu 1
-            </div>
-            <div className='flex flex-row items-center'>
-                <img src={cal} className='h-[17px] w-[17px]'></img>
-                <div className='text-[#787486] font-Inter mx-[10px] text-sm'>
-                18: 25 - 01/01/2024
+        {preview && (
+          <div className={`${classes.preview} ${animationClass}`}>
+            <div className={classes.preview_info}>
+              <div className={classes.info_title}>{docDetail.title}</div>
+              {/* <div className={classes.info_tag}>
+                <div className={`${classes.info_status} ${docDetail.status ====== "Completed" ? classes.info_completed : classes.info_onProgress}`}>
+                  {docDetail.status}
                 </div>
-                <div>
-                  <button className='text-[#0D062D] text-2xl font-bold mb-[27px]'>...</button>
+                <div className={classes.info_share}>Share</div>
+              </div> */}
+              <div className="flex flex-row">
+              {docDetail.tags.map((tag, idx) => (
+                <div
+                  key={idx}
+                  className={`h-[23px] w-[46px] rounded-[4px] bg-opacity-30 text-xs text-center pt-[2.5px] mr-[12px] ${
+                    tag === 'Math' ? 'bg-[#83C29D33] text-[#68B266]' : 'bg-[#74ADDF33] text-[#4957D5]'
+                  }`}
+                >
+                  {tag}
                 </div>
+              ))}
             </div>
-          </div>
-
-          <div className='flex flex-row '>
-            <div className='h-[23px] w-[46px] rounded-[4px] bg-[#83C29D33] bg-opacity-30 text-xs text-center pt-[2.5px] text-[#68B266] mr-[12px]'>
-                Math
-            </div>
-            <div className='h-[23px] w-[46px] rounded-[4px] bg-[#74ADDF33] bg-opacity-30 text-xs text-center pt-[2.5px] text-[#4957D5]'>
-                HK241
-            </div>
-          </div>
-        </div>
-
-        <div className='flex flex-col bg-[#FFFFFF] rounded-[16px] px-[15px] py-[7px] shadow-xl'>
-          <div className='flex flex-row justify-start items-center h-[40px] w-full mb-[3px]'>
-            <div className='w-[40%] font-Inter font-semibold text-sm'>
-                Tài liệu 1
-            </div>
-            <div className='flex flex-row items-center'>
-                <img src={cal} className='h-[17px] w-[17px]'></img>
-                <div className='text-[#787486] font-Inter mx-[10px] text-sm'>
-                18: 25 - 01/01/2024
+              <div className={classes.info_wAndt}>
+                <img className={classes.info_calenIMG} src={calendar_Phong} alt="calendar icon" />
+                <div className={classes.info_time}>{docDetail.time}</div>
+              </div>
+              <div className={classes.info_quanAndCat}>
+                <div className={classes.info_field}>
+                  <label className={classes.field_label}>Khoa:</label>
+                  <div className={classes.field_div}>{docDetail.field}</div>
                 </div>
-                <div>
-                  <button className='text-[#0D062D] text-2xl font-bold mb-[27px]'>...</button>
+                <div className={classes.info_course}>
+                  <label className={classes.course_label}>Môn học:</label>
+                  <div className={classes.course_div}>{docDetail.course}</div>
                 </div>
-            </div>
-          </div>
-
-          <div className='flex flex-row '>
-            <div className='h-[23px] w-[46px] rounded-[4px] bg-[#83C29D33] bg-opacity-30 text-xs text-center pt-[2.5px] text-[#68B266] mr-[12px]'>
-                Math
-            </div>
-            <div className='h-[23px] w-[46px] rounded-[4px] bg-[#74ADDF33] bg-opacity-30 text-xs text-center pt-[2.5px] text-[#4957D5]'>
-                HK241
-            </div>
-          </div>
-        </div>
-
-        <div className='flex flex-col bg-[#FFFFFF] rounded-[16px] px-[15px] py-[7px] shadow-xl'>
-          <div className='flex flex-row justify-start items-center h-[40px] w-full mb-[3px]'>
-            <div className='w-[40%] font-Inter font-semibold text-sm'>
-                Tài liệu 1
-            </div>
-            <div className='flex flex-row items-center'>
-                <img src={cal} className='h-[17px] w-[17px]'></img>
-                <div className='text-[#787486] font-Inter mx-[10px] text-sm'>
-                18: 25 - 01/01/2024
                 </div>
-                <div>
-                  <button className='text-[#0D062D] text-2xl font-bold mb-[27px]'>...</button>
-                </div>
-            </div>
-          </div>
 
-          <div className='flex flex-row '>
-            <div className='h-[23px] w-[46px] rounded-[4px] bg-[#83C29D33] bg-opacity-30 text-xs text-center pt-[2.5px] text-[#68B266] mr-[12px]'>
-                Math
-            </div>
-            <div className='h-[23px] w-[46px] rounded-[4px] bg-[#74ADDF33] bg-opacity-30 text-xs text-center pt-[2.5px] text-[#4957D5]'>
-                HK241
-            </div>
-          </div>
-        </div>
-        
-        <div className='flex flex-col bg-[#FFFFFF] rounded-[16px] px-[15px] py-[7px] shadow-xl'>
-          <div className='flex flex-row justify-start items-center h-[40px] w-full mb-[3px]'>
-            <div className='w-[40%] font-Inter font-semibold text-sm'>
-                Tài liệu 1
-            </div>
-            <div className='flex flex-row items-center'>
-                <img src={cal} className='h-[17px] w-[17px]'></img>
-                <div className='text-[#787486] font-Inter mx-[10px] text-sm'>
-                18: 25 - 01/01/2024
+              <div className={classes.info_quanAndCat2}>
+                <div className={classes.info_category}>
+                  <label className={classes.category_label}>Danh mục:</label>
+                  <div className={classes.category_div}>{docDetail.category}</div>
                 </div>
-                <div>
-                  <button className='text-[#0D062D] text-2xl font-bold mb-[27px]'>...</button>
+                <div className={classes.info_year}>
+                  <label className={classes.year_label}>Năm học:</label>
+                  <div className={classes.year_div}>{docDetail.tags[1]}</div>
                 </div>
-            </div>
-          </div>
+              </div>
 
-          <div className='flex flex-row '>
-            <div className='h-[23px] w-[46px] rounded-[4px] bg-[#83C29D33] bg-opacity-30 text-xs text-center pt-[2.5px] text-[#68B266] mr-[12px]'>
-                Math
+              <button className={classes.button_report}>Báo cáo</button>
+              <button className={classes.button_nav}>Cấu Hình In</button>
+              
             </div>
-            <div className='h-[23px] w-[46px] rounded-[4px] bg-[#74ADDF33] bg-opacity-30 text-xs text-center pt-[2.5px] text-[#4957D5]'>
-                HK241
+            <div className={classes.preview_file}>
+              <iframe src="https://res.cloudinary.com/dzp3hs84t/image/upload/v1727798906/vhiv9kpaktcfcg62rcau.pdf" title="Document Preview"></iframe>
             </div>
+            <div className={classes.preview_close} onClick={handleClosePreview}></div>
           </div>
-        </div>
-
-        <div className='flex flex-col bg-[#FFFFFF] rounded-[16px] px-[15px] py-[7px] shadow-xl'>
-          <div className='flex flex-row justify-start items-center h-[40px] w-full mb-[3px]'>
-            <div className='w-[40%] font-Inter font-semibold text-sm'>
-                Tài liệu 1
-            </div>
-            <div className='flex flex-row items-center'>
-                <img src={cal} className='h-[17px] w-[17px]'></img>
-                <div className='text-[#787486] font-Inter mx-[10px] text-sm'>
-                18: 25 - 01/01/2024
-                </div>
-                <div>
-                  <button className='text-[#0D062D] text-2xl font-bold mb-[27px]'>...</button>
-                </div>
-            </div>
-          </div>
-
-          <div className='flex flex-row '>
-            <div className='h-[23px] w-[46px] rounded-[4px] bg-[#83C29D33] bg-opacity-30 text-xs text-center pt-[2.5px] text-[#68B266] mr-[12px]'>
-                Math
-            </div>
-            <div className='h-[23px] w-[46px] rounded-[4px] bg-[#74ADDF33] bg-opacity-30 text-xs text-center pt-[2.5px] text-[#4957D5]'>
-                HK241
-            </div>
-          </div>
-        </div>
-
-        <div className='flex flex-col bg-[#FFFFFF] rounded-[16px] px-[15px] py-[7px] shadow-xl'>
-          <div className='flex flex-row justify-start items-center h-[40px] w-full mb-[3px]'>
-            <div className='w-[40%] font-Inter font-semibold text-sm'>
-                Tài liệu 1
-            </div>
-            <div className='flex flex-row items-center'>
-                <img src={cal} className='h-[17px] w-[17px]'></img>
-                <div className='text-[#787486] font-Inter mx-[10px] text-sm'>
-                18: 25 - 01/01/2024
-                </div>
-                <div>
-                  <button className='text-[#0D062D] text-2xl font-bold mb-[27px]'>...</button>
-                </div>
-            </div>
-          </div>
-
-          <div className='flex flex-row '>
-            <div className='h-[23px] w-[46px] rounded-[4px] bg-[#83C29D33] bg-opacity-30 text-xs text-center pt-[2.5px] text-[#68B266] mr-[12px]'>
-                Math
-            </div>
-            <div className='h-[23px] w-[46px] rounded-[4px] bg-[#74ADDF33] bg-opacity-30 text-xs text-center pt-[2.5px] text-[#4957D5]'>
-                HK241
-            </div>
-          </div>
-        </div>
-
-        <div className='flex flex-col bg-[#FFFFFF] rounded-[16px] px-[15px] py-[7px] shadow-xl'>
-          <div className='flex flex-row justify-start items-center h-[40px] w-full mb-[3px]'>
-            <div className='w-[40%] font-Inter font-semibold text-sm'>
-                Tài liệu 1
-            </div>
-            <div className='flex flex-row items-center'>
-                <img src={cal} className='h-[17px] w-[17px]'></img>
-                <div className='text-[#787486] font-Inter mx-[10px] text-sm'>
-                18: 25 - 01/01/2024
-                </div>
-                <div>
-                  <button className='text-[#0D062D] text-2xl font-bold mb-[27px]'>...</button>
-                </div>
-            </div>
-          </div>
-
-          <div className='flex flex-row '>
-            <div className='h-[23px] w-[46px] rounded-[4px] bg-[#83C29D33] bg-opacity-30 text-xs text-center pt-[2.5px] text-[#68B266] mr-[12px]'>
-                Math
-            </div>
-            <div className='h-[23px] w-[46px] rounded-[4px] bg-[#74ADDF33] bg-opacity-30 text-xs text-center pt-[2.5px] text-[#4957D5]'>
-                HK241
-            </div>
-          </div>
-        </div>
-
-        <div className='flex flex-col bg-[#FFFFFF] rounded-[16px] px-[15px] py-[7px] shadow-xl'>
-          <div className='flex flex-row justify-start items-center h-[40px] w-full mb-[3px]'>
-            <div className='w-[40%] font-Inter font-semibold text-sm'>
-                Tài liệu 1
-            </div>
-            <div className='flex flex-row items-center'>
-                <img src={cal} className='h-[17px] w-[17px]'></img>
-                <div className='text-[#787486] font-Inter mx-[10px] text-sm'>
-                18: 25 - 01/01/2024
-                </div>
-                <div>
-                  <button className='text-[#0D062D] text-2xl font-bold mb-[27px]'>...</button>
-                </div>
-            </div>
-          </div>
-
-          <div className='flex flex-row '>
-            <div className='h-[23px] w-[46px] rounded-[4px] bg-[#83C29D33] bg-opacity-30 text-xs text-center pt-[2.5px] text-[#68B266] mr-[12px]'>
-                Math
-            </div>
-            <div className='h-[23px] w-[46px] rounded-[4px] bg-[#74ADDF33] bg-opacity-30 text-xs text-center pt-[2.5px] text-[#4957D5]'>
-                HK241
-            </div>
-          </div>
-        </div>
-
-        <div className='flex flex-col bg-[#FFFFFF] rounded-[16px] px-[15px] py-[7px] shadow-xl'>
-          <div className='flex flex-row justify-start items-center h-[40px] w-full mb-[3px]'>
-            <div className='w-[40%] font-Inter font-semibold text-sm'>
-                Tài liệu 1
-            </div>
-            <div className='flex flex-row items-center'>
-                <img src={cal} className='h-[17px] w-[17px]'></img>
-                <div className='text-[#787486] font-Inter mx-[10px] text-sm'>
-                18: 25 - 01/01/2024
-                </div>
-                <div>
-                  <button className='text-[#0D062D] text-2xl font-bold mb-[27px]'>...</button>
-                </div>
-            </div>
-          </div>
-
-          <div className='flex flex-row '>
-            <div className='h-[23px] w-[46px] rounded-[4px] bg-[#83C29D33] bg-opacity-30 text-xs text-center pt-[2.5px] text-[#68B266] mr-[12px]'>
-                Math
-            </div>
-            <div className='h-[23px] w-[46px] rounded-[4px] bg-[#74ADDF33] bg-opacity-30 text-xs text-center pt-[2.5px] text-[#4957D5]'>
-                HK241
-            </div>
-          </div>
-        </div>
-
-        <div className='flex flex-col bg-[#FFFFFF] rounded-[16px] px-[15px] py-[7px] shadow-xl'>
-          <div className='flex flex-row justify-start items-center h-[40px] w-full mb-[3px]'>
-            <div className='w-[40%] font-Inter font-semibold text-sm'>
-                Tài liệu 1
-            </div>
-            <div className='flex flex-row items-center'>
-                <img src={cal} className='h-[17px] w-[17px]'></img>
-                <div className='text-[#787486] font-Inter mx-[10px] text-sm'>
-                18: 25 - 01/01/2024
-                </div>
-                <div>
-                  <button className='text-[#0D062D] text-2xl font-bold mb-[27px]'>...</button>
-                </div>
-            </div>
-          </div>
-
-          <div className='flex flex-row '>
-            <div className='h-[23px] w-[46px] rounded-[4px] bg-[#83C29D33] bg-opacity-30 text-xs text-center pt-[2.5px] text-[#68B266] mr-[12px]'>
-                Math
-            </div>
-            <div className='h-[23px] w-[46px] rounded-[4px] bg-[#74ADDF33] bg-opacity-30 text-xs text-center pt-[2.5px] text-[#4957D5]'>
-                HK241
-            </div>
-          </div>
-        </div>
-
-        <div className='flex flex-col bg-[#FFFFFF] rounded-[16px] px-[15px] py-[7px] shadow-xl'>
-          <div className='flex flex-row justify-start items-center h-[40px] w-full mb-[3px]'>
-            <div className='w-[40%] font-Inter font-semibold text-sm'>
-                Tài liệu 1
-            </div>
-            <div className='flex flex-row items-center'>
-                <img src={cal} className='h-[17px] w-[17px]'></img>
-                <div className='text-[#787486] font-Inter mx-[10px] text-sm'>
-                18: 25 - 01/01/2024
-                </div>
-                <div>
-                  <button className='text-[#0D062D] text-2xl font-bold mb-[27px]'>...</button>
-                </div>
-            </div>
-          </div>
-
-          <div className='flex flex-row '>
-            <div className='h-[23px] w-[46px] rounded-[4px] bg-[#83C29D33] bg-opacity-30 text-xs text-center pt-[2.5px] text-[#68B266] mr-[12px]'>
-                Math
-            </div>
-            <div className='h-[23px] w-[46px] rounded-[4px] bg-[#74ADDF33] bg-opacity-30 text-xs text-center pt-[2.5px] text-[#4957D5]'>
-                HK241
-            </div>
-          </div>
-        </div>
-
-        
-        </div>
+        )}
+      </div>
+      </div>
     </div>
-  )
-}
+  );
+};
