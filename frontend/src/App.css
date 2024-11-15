@@ -1,0 +1,5 @@
+.contentSpace{
+    width: calc(100vw - 220px);
+    height: calc(90vh);
+    overflow-y: auto;
+}
