@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import classes from './style.module.css';
 import {ManagePrint} from '../../components/ManagePrint'
+import api from '../../Services/api.jsx'
 
 export const PrintService = () => {
   const [isOptionsOpen, setIsOptionsOpen] = useState(false);
@@ -29,6 +30,15 @@ export const PrintService = () => {
     setIsOptionsOpen(false);
   };
 
+//call typefile upload
+// useEffect({
+//   api.get("")
+// },())
+
+
+
+
+
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (overlayRef.current && !overlayRef.current.contains(event.target)) {
@@ -49,10 +59,13 @@ export const PrintService = () => {
 
   const handleNewUploadClick = () => {
     setIsUploadMode(true);
+
   };
 
   const handleRecentClick = () => {
+
     setIsUploadMode(false);
+
   };
 
   const handleFileUpload = (event) => {
@@ -117,6 +130,7 @@ export const PrintService = () => {
                   multiple
                   onChange={handleFileUpload}
                   className={classes.fileInput}
+                  accept=".pdf"
                 />
               </label>
             </div>
