@@ -62,7 +62,7 @@ public class StatisticResponseImpl implements StatisticService {
                 completeStats.add(stat.get());
             } else {
                 // Nếu không có dữ liệu, thêm một đối tượng PrintJobStats với totalPagesPrinted = 0
-                completeStats.add(new PrintJobStats(day, 0));
+                completeStats.add(new PrintJobStats(day, 0,0));
             }
         }
 

@@ -18,7 +18,7 @@ public interface PrintJobRepository extends JpaRepository<PrintJob, Long> {
     List<PrintJob> findAllPrintJobsThisWeek();
 
 
-    @Query("SELECT new hcmut.spss.be.dtos.response.PrintJobStats(DAYOFWEEK(p.jobStartTime), SUM(p.numberPagePrint)) " +
+    @Query("SELECT new hcmut.spss.be.dtos.response.PrintJobStats(DAYOFWEEK(p.jobStartTime), SUM(p.numberPagePrint), COUNT(*)) " +
             "FROM PrintJob p " +
             "WHERE p.jobStartTime >= :startOfWeek AND p.jobStartTime < :endOfWeek " +
             "GROUP BY DAYOFWEEK(p.jobStartTime)")

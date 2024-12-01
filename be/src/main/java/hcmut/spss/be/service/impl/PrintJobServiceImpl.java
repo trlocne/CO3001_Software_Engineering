@@ -115,6 +115,7 @@ import hcmut.spss.be.dtos.response.PrintJobResponse;
 import hcmut.spss.be.dtos.response.MessageResponse;
 import hcmut.spss.be.entity.fileConfig.FileConfig;
 import hcmut.spss.be.entity.fileConfig.PaperSize;
+import hcmut.spss.be.entity.fileConfig.Sides;
 import hcmut.spss.be.entity.printJob.PrintJob;
 import hcmut.spss.be.entity.printJob.StatusPrint;
 import hcmut.spss.be.entity.printer.Printer;
@@ -191,6 +192,9 @@ public class PrintJobServiceImpl implements PrintJobService {
         Printer printer = printerRepository.findById(printerId).orElseThrow(() -> new RuntimeException("Printer not found"));
         int numberOfPages = (int) Math.ceil((double) fileConfig.getDocument().getNumOfPage() /fileConfig.getPageOfSheet()*fileConfig.getNumberOfCopies());
         if (fileConfig.getPaperSize().equals(PaperSize.A3)){
+            numberOfPages *= 2;
+        }
+        if (fileConfig.getSides().equals(Sides.SINGLE)){
             numberOfPages *= 2;
         }
         // get student make log
