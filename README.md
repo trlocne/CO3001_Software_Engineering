@@ -19,6 +19,8 @@
     <a href="mailto:loc.tran04@hcmut.edu.vn">Báo lỗi</a>
     ·
     <a href="mailto:loc.tran04@hcmut.edu.vn">Đề xuất tính năng</a>
+    .
+    <a href="https://drive.google.com/file/d/1ztr3jyhYPAWcAbje8h9KZjjdMJX4nlFT/view?usp=sharing">Report</a>
   </p>
 </div>
 
